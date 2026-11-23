@@ -1,0 +1,55 @@
+# Evidence = exemplar ranks in pilot/fineweb-10m-sparse/summaries/exemplars.parquet.
+# "Strong" = beyond the side's atlas q99 (+ >= 0.248, - <= -0.269); "tail" = |act| >= 1.0. Context probes count
+# firings with a group word in the 10 tokens before the firing token, against the share of all 9,995,501 tokens
+# with such a word in the same window; "random" = 12 random layer-24 neurons measured the same way on their own
+# strong negative firings.
+neuron: L24-N345
+data: pilot/fineweb-10m-sparse
+label: "the perceived scene: what is seen or heard"
+positive:
+  status: unclear
+  cue_type: mixed
+  explanation: >-
+    Weak and diffuse (max +2.6, pos_q99 0.25). Strong firings spread over "of", "the", "to", "in", "on", "with"
+    at 1-4x their base rates, and the top exemplars are nouns in formal or regulatory text (a vulgar response,
+    safe distancing measures, derogatory emails, all equipment necessary, operational costs) with no shared cue;
+    none of the context probes (perception verbs, narrative verbs, pronouns) move off 1x. The logit lens
+    (" lift", " mutually", " quarterly") does not help.
+  fires_on: "nouns and prepositions in formal prose (response, distancing, equipment, costs); no single cue found"
+  not_on: "untested"
+  evidence: [0, 1, 3, 6, 7, 10, 26]
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: >-
+    Fires inside a scene that someone is perceiving: on the thing seen, heard or caught and on what it is
+    doing, right after a verb of perception or detection (hear their baby [[breathing]], caught [[me]],
+    finds him [[doing]] his job, heard a huntsman [[say]], saw Isaac was [[sporting]], see a painting class
+    [[in]] progress, seen ... in the [[distance]], watch your entire [[session]], monitor ... in
+    [[compliance]]). Perception verbs (see, hear, watch, listen, look, notice, observe) sit in the 10 tokens
+    before 11.1% of its 16,540 strong firings and 17.5% of the 1,335 tail firings, 4.4x and 6.9x the baseline;
+    detection verbs (caught, find, monitor, capture, witness) 3.3x and 5.9x. All 12 random layer-24 neurons
+    sit at 0.5-1.7x on both groups. Hearing cases fire too (baby breathing, even breathing, hear what they
+    say); sight and hearing were not compared separately. Narrative prose in general is only part of it: generic past-tense verbs (said, went, made) and
+    third-person pronouns are 2.0-2.5x, so about half the effect is the perceived-scene cue itself. Weak
+    because most strong firings have no perception verb within 10 tokens: the firing token is the object or
+    predicate of the scene, often several tokens after the verb or after an implicit one (snaps of the group as
+    they sped [[by]], ticketing bicycl[[ists]] who are doing).
+  fires_on: "the object or complement of see/hear/watch/catch/find/monitor and what it is doing: 'them', 'him', 'her', 'people' (6-9x), 'breathing', 'say', 'doing', 'by', 'in progress'"
+  not_on: >-
+    the perception verb itself; formal or instructional text without an observer (the positive side's
+    territory); sparse tier only, not checked in the deep tier
+  evidence: [1, 2, 3, 4, 5, 9, 11, 12, 13, 14, 16, 19, 25, 26, 29]
+  verification: untested
+relation: unrelated
+relation_note: >-
+  The negative side is the main one (16,540 strong firings vs 4,417; min -3.6 vs max +2.6) and marks the
+  perceived scene in narrative prose. The positive side is weak and diffuse, sitting on function words and nouns
+  in formal text with no cue found; it may be the absence of an observer, but nothing tested supports that
+  yet. On pilot/fineweb-1m the same picture holds for the negative side (watched [[them]], I [[saw]] myself,
+  animals in [[motion]], bikers came flying [[by]]). Counts are from the sparse tier, so non-firing rates are
+  floors.
+by:
+  - {github: constantine1824, method: agent, model: claude-fable-5-1}
