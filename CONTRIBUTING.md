@@ -48,7 +48,8 @@ them before you write any prompts.
 
 **Where the design goes, and the check.** A design is required for every request. For types A to D,
 fill in the `## Design` section of the PR template, keeping it to one or two lines per stage. For
-type E, write `requests/<request id>/DESIGN.md` from the [template](#tools), next to your code.
+type E, write `requests/<request id>/DESIGN.md` from [`templates/DESIGN.md`](templates/DESIGN.md), next to
+your code. All templates are listed in [EXPERIMENTS.md](EXPERIMENTS.md#templates).
 
 The `design` CI check fails any PR that adds or changes a request without one. Each of the six
 stages must be filled in, and Controls must name a baseline. Editing the PR description re-runs the

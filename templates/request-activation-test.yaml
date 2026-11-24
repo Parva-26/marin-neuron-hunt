@@ -1,0 +1,9 @@
+# TEMPLATE: activation test (type A). Copy to requests/<neuron>-<nnn>.yaml and fill it in. See EXPERIMENTS.md.
+type: activation-test
+neuron: L40-N25546
+side: "+"
+hypothesis: "..."
+should_fire: ["... [[target]] ...", ...]     # >= 10
+should_not_fire: ["... [[target]] ...", ...] # >= 10
+threshold: atlas-q99        # or a number
+by: {github: your-handle, method: human}

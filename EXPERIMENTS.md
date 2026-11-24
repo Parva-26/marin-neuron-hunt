@@ -8,9 +8,48 @@ Every request needs a design, and CI fails a request PR without one. Before writ
 the claim, what's measured, the controls (near misses, random neurons), data, noise and the
 result that would refute you.
 
-Pick a type from the menu, or design your own (type E). Copy the template into
+Pick a type from the menu, or design your own (type E). Copy its template from [`templates/`](templates/) into
 `requests/<neuron>-<nnn>.yaml`, where `<nnn>` numbers the requests for that neuron (`001`, `002`, …).
 [`examples/L40-N25546-001.yaml`](examples/L40-N25546-001.yaml) is a complete example.
+
+## Templates
+
+Blank templates live in [`templates/`](templates/) and filled-in examples in [`examples/`](examples/). The pull
+request template is the one exception: GitHub only reads it from `.github/`.
+
+**Explanation file.**
+
+| template | use it for | what you fill in |
+|---|---|---|
+| [`explanation.yaml`](templates/explanation.yaml) | Explaining a neuron. Copy it to `explanations/L<layer>/L<layer>-N<neuron>.yaml`. | A label, then for each side its status, cue type, what it fires on and doesn't, and the evidence; then how the two sides relate |
+
+**Request files.** Copy one to `requests/<neuron>-<nnn>.yaml`. They are blank forms: the `...` placeholders
+don't pass the validator until you fill them in.
+
+| template | use it for | what you fill in |
+|---|---|---|
+| [`request-activation-test.yaml`](templates/request-activation-test.yaml) | **A. Activation test.** Does the side fire where you say, and stay quiet where you say it doesn't? | The side, a hypothesis, at least 10 should-fire and 10 shouldn't-fire prompts, an optional threshold |
+| [`request-steering.yaml`](templates/request-steering.yaml) | **B. Steering.** If the side is pushed, does the next-token prediction move as you predict? | The side, the strength `k`, at least 10 prompts, the tokens you expect to go up and down |
+| [`request-ablation.yaml`](templates/request-ablation.yaml) | **C. Ablation.** If the neuron (or a set) is removed, does something specific break? | The neurons, zero or mean mode, at least 10 prompts, the metric and your predicted effect size |
+| [`request-contrast.yaml`](templates/request-contrast.yaml) | **D. Contrast test.** Does the one difference you name drive the side? | The side and at least 10 pairs of prompts that differ in one thing |
+| [`request-custom.yaml`](templates/request-custom.yaml) | **E. Your own experiment.** Anything not on the menu, including a lens fit. | A title, the procedure, the prediction, the pass rule, what would refute you, the compute and the outputs |
+
+**Designs.** Every request needs one. Types A to D put it in the PR description; type E puts it in
+`requests/<request id>/DESIGN.md`.
+
+| template | use it for | what you fill in |
+|---|---|---|
+| [`DESIGN.md`](templates/DESIGN.md) | The design of any type E request. `stationhouse design new <path>` writes the same file. | The six stages (Claim, Unit and metric, Controls, Data, Noise, Readout), then How to run, and Deviations after the run |
+| [`lens-fit-DESIGN.md`](templates/lens-fit-DESIGN.md) | The design of a request that fits a lens to Marin 32B (tuned lens, J-lens and so on). | The same six stages, written for a lens: the text to fit on, a pilot and its bar, the full run and its bar, and explained neurons to check the lens on |
+| [`.github/pull_request_template.md`](.github/pull_request_template.md) | Every PR. GitHub fills the description with it. | The neurons, a plain-English summary, your Station House task, how you investigated, and the six-stage `## Design` section for types A to D |
+
+**Filled-in examples.** These live in [`examples/`](examples/), pass the validator and show every field. They are
+format examples for a neuron that is still unexplained, so they don't count as an explanation or a live request.
+
+| example | filled-in version of | shows |
+|---|---|---|
+| [`L40-N25546.yaml`](examples/L40-N25546.yaml) | `explanation.yaml` | Both sides, each with its cue type, evidence and verification status |
+| [`L40-N25546-001.yaml`](examples/L40-N25546-001.yaml) | `request-activation-test.yaml` | An activation-test request with every prompt written out |
 
 All runs use Marin 32B (`marin-community/marin-32b-base` @ `f19b3466`, bf16), the atlas's definition of
 activation (`act = silu(gate) * up`), and the atlas's per-neuron thresholds from
@@ -35,16 +74,7 @@ The cheapest test, and the right first test for most explanations.
 - **Pass:** at least 80% of the should-fire prompts exceed the threshold **and** at least 80% of the
   shouldn't-fire prompts stay below it. The runner also reports AUROC.
 
-```yaml
-type: activation-test
-neuron: L40-N25546
-side: "+"
-hypothesis: "..."
-should_fire: ["... [[target]] ...", ...]     # >= 10
-should_not_fire: ["... [[target]] ...", ...] # >= 10
-threshold: atlas-q99        # or a number
-by: {github: your-handle, method: human}
-```
+Template: [`templates/request-activation-test.yaml`](templates/request-activation-test.yaml).
 
 ### B. Steering: "if I push it, does the model do what I predict?"
 
@@ -57,16 +87,7 @@ by: {github: your-handle, method: human}
 - **Pass:** your tokens' mean log-probability gain beats the 95th percentile of the random-neuron baseline, in
   the predicted direction.
 
-```yaml
-type: steering
-neuron: L40-N25546
-side: "+"
-k: 4
-prompts: ["... [[target]]", ...]   # >= 10; steering applies at the marked token
-expect_up: [" vice", " Conversely"]
-expect_down: []
-by: {github: your-handle, method: agent, model: "..."}
-```
+Template: [`templates/request-steering.yaml`](templates/request-steering.yaml).
 
 ### C. Ablation: "if I remove it, does something specific break?"
 
@@ -82,15 +103,7 @@ by: {github: your-handle, method: agent, model: "..."}
   because other neurons do the same job. A null result is reported as **inconclusive**, not refuted. Ablation is
   most informative on a set of neurons you think are redundant.
 
-```yaml
-type: ablation
-neurons: [L40-N25546]   # one or more
-mode: zero              # or mean
-prompts: ["... [[target]] ...", ...]  # >= 10
-metric: {kind: next-token-logprob, token: " vice"}   # or {kind: loss}
-predicted_effect: -1.0  # change in the metric, in nats
-by: {github: your-handle, method: human}
-```
+Template: [`templates/request-ablation.yaml`](templates/request-ablation.yaml).
 
 ### D. Contrast test: "does the one difference I name drive it?"
 
@@ -102,24 +115,17 @@ by: {github: your-handle, method: human}
 - **Pass:** the side is higher on the predicted member in at least 80% of pairs, and the mean difference is at
   least half the side's threshold.
 
-```yaml
-type: contrast
-neuron: L40-N25546
-side: "+"
-pairs:
-  - {high: "... [[target]] ...", low: "... [[target]] ..."}   # >= 10 pairs
-  - {high: "<exemplar text> [[target]] ...", low: "<same, one change> [[target]] ..."}
-by: {github: your-handle, method: human}
-```
+Template: [`templates/request-contrast.yaml`](templates/request-contrast.yaml).
 
 ### E. Your own experiment
 
 Anything not on the menu: activation patching, interactions between neurons, a new prompt set, a different
 metric, attention attribution, and so on.
 
-- Write the design in `requests/<request id>/DESIGN.md` (`stationhouse design new requests/<request id>/DESIGN.md`).
+- Write the design in `requests/<request id>/DESIGN.md`, from [`templates/DESIGN.md`](templates/DESIGN.md)
+  (`stationhouse design new requests/<request id>/DESIGN.md` writes the same file).
 - Fitting a lens (tuned lens, J-lens and so on)? Start from
-  [`examples/lens-fit-DESIGN.md`](examples/lens-fit-DESIGN.md), which has the same six stages plus a pilot and a
+  [`templates/lens-fit-DESIGN.md`](templates/lens-fit-DESIGN.md), which has the same six stages plus a pilot and a
   full run.
 - Describe **the procedure** precisely enough that someone else could run it.
 - State **the prediction**, **the pass rule**, and what result would **refute** you.
@@ -127,19 +133,7 @@ metric, attention attribution, and so on.
 - Code is welcome in the PR (under `requests/<request id>/`), but a maintainer reviews it before it runs. Custom
   experiments may take longer than one daily batch.
 
-```yaml
-type: custom
-neurons: [L40-N25546]
-title: "..."
-procedure: |
-  ...
-prediction: "..."
-pass_rule: "..."
-refuted_if: "..."
-compute: "about N forward passes of up to M tokens"
-outputs: "..."
-by: {github: your-handle, method: human}
-```
+Template: [`templates/request-custom.yaml`](templates/request-custom.yaml).
 
 ## Results
 

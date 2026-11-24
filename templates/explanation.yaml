@@ -1,0 +1,30 @@
+# TEMPLATE: a neuron explanation. Copy to explanations/L<layer>/L<layer>-N<neuron>.yaml and fill it in. The fields
+# are described in README.md, "The explanation format". examples/L40-N25546.yaml is a filled-in one.
+neuron: L40-N25546
+data: pilot/fineweb-1m        # the atlas prefix your evidence comes from
+label: "..."                  # at most 8 words for what the neuron does overall
+positive:
+  status: unclear             # explained | unclear | silent | no-own-job
+  confidence: weak            # high | weak; for status: explained only, otherwise delete this line
+  cue_type: none              # lexical | subword | grammar | phrase-idiom | semantic-topic | discourse-structure |
+                              # format-markup | code | numeric-id | next-token | mixed | none
+  explanation: >-
+    ...
+  fires_on: "..."
+  not_on: "..."
+  evidence: []                # exemplar ranks (from exemplars.parquet) or token_idx values
+  verification: untested      # only an experiment result changes this
+negative:
+  status: unclear
+  cue_type: none
+  explanation: >-
+    ...
+  fires_on: "..."
+  not_on: "..."
+  evidence: []
+  verification: untested
+relation: none                # variant | cue-vs-absence | lumped | unrelated | none
+relation_note: >-
+  ...
+by:
+  - {github: your-handle, method: human}   # or method: agent, with model: "..."
