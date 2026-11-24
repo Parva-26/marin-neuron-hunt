@@ -118,6 +118,9 @@ Anything not on the menu: activation patching, interactions between neurons, a n
 metric, attention attribution, and so on.
 
 - Write the design in `requests/<request id>/DESIGN.md` (`stationhouse design new requests/<request id>/DESIGN.md`).
+- Fitting a lens (tuned lens, J-lens and so on)? Start from
+  [`examples/lens-fit-DESIGN.md`](examples/lens-fit-DESIGN.md), which has the same six stages plus a pilot and a
+  full run.
 - Describe **the procedure** precisely enough that someone else could run it.
 - State **the prediction**, **the pass rule**, and what result would **refute** you.
 - Estimate **the compute** (prompts × forward passes) and say what the runner should save.
