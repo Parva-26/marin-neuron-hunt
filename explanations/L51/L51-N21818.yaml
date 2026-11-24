@@ -1,0 +1,39 @@
+neuron: L51-N21818
+data: pilot/fineweb-10m-sparse
+label: "word before 'sure' ('make sure', 'for sure')"
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: >-
+    Fires on the word right before "sure" ("make sure", "be sure to", "I'm sure", "are you sure", "for sure",
+    "to be sure"), and its output pushes " sure" and " certain" (logit lens top). Of the 2,692 words before
+    "sure" in the 10M tokens, 78% pass the threshold and 19% fire strongly; "make sure" passes it 92% of the
+    time (28% strongly) and "for sure" 92% (42% strongly). 85.5% of the side's 641 strong firings are right
+    before "sure" or "certain", against 22 strong firings among the 17,794 "make" not before "sure" and none
+    on "sure" itself. All three deep-tier words before "sure" pass the threshold (+16.5, +10.5, +41.2).
+  fires_on: "the word right before 'sure' (make, be, am, for, you, not), e.g. 'make sure', 'for sure', 'are you sure'"
+  not_on: >-
+    'make' not before 'sure' (22 strong firings among 17,794), 'sure' itself (no strong firing among 2,692),
+    and words before 'certain' only weakly (2% strong). Sparse tier only, apart from the three deep-tier cases.
+  evidence: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: mixed
+  explanation: >-
+    A very weak side (peak -15 against +264) that the sparse tier almost never stores: all 32 of its exemplars
+    are missing from the sparse tier because, on each of those tokens, 64 other neurons outrank it, and the
+    sparse tier has no negative firing past its threshold at all. Its exemplars (years such as "2006",
+    percentages, place names) and the deep tier, where it passes the threshold on 25 of 8,188 tokens (most
+    strongly -5.1 on "offices"; a few on "make" not followed by "sure"), show no pattern we can name.
+  fires_on: "scattered tokens (years, percentages, names); no common pattern found"
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: unrelated
+relation_note: >-
+  The positive side anticipates 'sure'; the negative side is weak, nearly absent from the sparse tier and
+  unclear, so no shared job is claimed.
+by:
+  - {github: Parva-26, method: agent, model: claude-opus-5-5}
