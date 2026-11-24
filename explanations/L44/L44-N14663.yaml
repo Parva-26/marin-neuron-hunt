@@ -1,0 +1,42 @@
+neuron: L44-N14663
+data: pilot/fineweb-10m-sparse
+label: "noun before 'of mine', adjective before 'of you'"
+positive:
+  status: explained
+  confidence: weak
+  cue_type: next-token
+  explanation: >-
+    Fires on the noun before "of mine / yours / hers / ours / theirs" ("a pet peeve of mine", "that thick
+    head of yours", "this son of mine", "a friend of mine") and on the adjective in "kind of you", "thoughtful
+    of him", and its output pushes " of" (logit lens top). Words before "of mine / yours / hers / ours /
+    theirs" pass the threshold 81% of the time (26% strongly) and "kind / thoughtful ... of you" 8 of 10,
+    against 2% for the ordinary "of his" (as in "the pit of his stomach") and 14 strong firings among
+    205,890 other words before "of"; but only about a third of the side's 136 strong firings are in these
+    phrases (several others are "friend" in other contexts).
+  fires_on: "the word right before 'of mine / yours / hers / ours / theirs' or before 'of you / him' after kind / nice / thoughtful"
+  not_on: >-
+    words before an ordinary 'of' (14 strong among 205,890) and before 'of his' as a plain possessive (2% past
+    the threshold); the deep tier's six 'of his / of you' cases do not fire. Otherwise untested.
+  evidence: [0, 1, 2, 4, 5, 7, 8, 10, 14, 15, 16, 26]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: mixed
+  explanation: >-
+    A weak side (peak -15 against +173). Its strongest firings are on a noun that a complement or clause then
+    specifies ("the demand for mules", "the agreement governing the loan", "access to the Internet", "the
+    reporter who"), and its logit lens pushes " mine", " yours", " ours", but only 24.5% of its 805 strong
+    firings are on need / demand / access / answer / information and similar nouns, those nouns pass the
+    threshold only 1% of the time, and one document gives 16 of the strong firings.
+  fires_on: >-
+    weakly and loosely: a noun followed by 'for / to / who' that specifies it ('the demand for', 'access to',
+    'the reporter who'); otherwise scattered
+  not_on: "words before 'of mine / yours ...' (0 past the threshold); otherwise untested"
+  evidence: [0, 2, 6, 9, 13, 20]
+  verification: untested
+relation: unrelated
+relation_note: >-
+  The positive side anticipates 'of' in 'a friend of mine'; the negative side is unclear, so no shared job is
+  claimed.
+by:
+  - {github: Parva-26, method: agent, model: claude-opus-5-5}
