@@ -1,0 +1,38 @@
+neuron: L51-N22993
+data: pilot/fineweb-10m-sparse
+label: "word before 'ill' / 'sick'"
+positive:
+  status: explained
+  confidence: weak
+  cue_type: next-token
+  explanation: >-
+    Fires on the word right before "ill" or "sick" ("she fell ill", "critically ill", "seriously ill", "make
+    you ill", "made us sick"), and its output pushes " ill" (all five top logit-lens tokens are "ill").
+    Degree adverbs before "ill" (critically, seriously, quite, too) pass the threshold 92% of the time and
+    fire strongly 46%; verbs (fell, became, is) 55% and 23%; but over all 371 words before "ill" it is 42% and
+    12%, and over 263 before "sick" 64% and 8%. 59.5% of its 111 strong firings are right before "ill" or
+    "sick", and most of the rest are near "illness" / "sickness". "ill" / "sick" themselves never fire strongly.
+  fires_on: "the word right before 'ill' or 'sick', strongest after 'critically / seriously / fell / became'"
+  not_on: >-
+    'ill' / 'sick' themselves (no strong firing among 634) and the same degree adverbs elsewhere (4 strong among
+    33,004). Sparse tier only, except one deep-tier 'got sick' that fires (+62); otherwise untested.
+  evidence: [0, 1, 2, 3, 4, 7, 9, 11, 12, 13, 16, 18, 21, 22, 24, 26]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: mixed
+  explanation: >-
+    A very weak side (peak -19 against +304) with no pattern we can name: its strongest firings are numbers,
+    legal citations, finance and physics text ("and one-half of one", "5,113,149, and", "directly
+    proportional"), and eight of its 64 exemplars are missing from the sparse tier because 64 other neurons
+    outrank them on those tokens.
+  fires_on: "scattered tokens in numeric, legal and technical text; no common pattern found"
+  not_on: untested
+  evidence: [0, 1, 2, 3, 4, 5]
+  verification: untested
+relation: unrelated
+relation_note: >-
+  The positive side anticipates 'ill' / 'sick'; the negative side is weak and unclear, so no shared job is
+  claimed.
+by:
+  - {github: Parva-26, method: agent, model: claude-opus-5-5}
