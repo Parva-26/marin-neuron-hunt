@@ -1,0 +1,32 @@
+neuron: L50-N11234
+data: pilot/fineweb-10m-sparse
+label: pushes 'forces'/'command' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a military-descriptor word before a noun like forces, army, soldiers or troops;
+    about 20 of 32 are adjectives or modifiers of military nouns (elite, special, Iraqi, regular). In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "command", "special", "forces": +0.38 nats, 11x random.
+    Contrast test passed (8 of 10 pairs). Firing token followed by a steered word: 5 of 32 top examples (forces,
+    command, special).'
+  fires_on: Marked token is a military-descriptor word before a noun like forces, army, soldiers or troops; about
+    20 of 32 are adjectives or modifiers of military nouns (elite, special, Iraqi, regular).
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 3, 6, 13, 18]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

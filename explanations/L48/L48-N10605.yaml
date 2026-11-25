@@ -1,0 +1,31 @@
+neuron: L48-N10605
+data: pilot/fineweb-10m-sparse
+label: pushes 'case' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token sits just before a legal-court or case-law word: ''Court'', ''case'', ''decisions'',
+    ''law'', ''Supreme''; about 20 of 32 precede court/case/decision terms. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "work", "case", "manager", "social", "student": +0.21 nats, 7x random.
+    Contrast test passed (8 of 10 pairs). Firing token followed by a steered word: 6 of 32 top examples (case).'
+  fires_on: 'Marked token sits just before a legal-court or case-law word: ''Court'', ''case'', ''decisions'', ''law'',
+    ''Supreme''; about 20 of 32 precede court/case/decision terms.'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [2, 9, 12, 24, 26, 31]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
