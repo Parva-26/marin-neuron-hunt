@@ -1,0 +1,32 @@
+neuron: L58-N2964
+data: pilot/fineweb-10m-sparse
+label: pushes 'professor'/'philosophy'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'The token right before ''not'' in ''not only / not just'' constructions, mostly verbs or auxiliaries
+    like ''that'', ''is'', ''are'', ''will''; about 25 of 32 are followed by ''not''. In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "professor", "philosophy": +0.32 nats, 7x random. Contrast test
+    failed (1 of 10 pairs). The firing description is the weak part: the contrast test did not confirm it. Firing
+    token followed by a steered word: 0 of 32 top examples.'
+  fires_on: The token right before 'not' in 'not only / not just' constructions, mostly verbs or auxiliaries like
+    'that', 'is', 'are', 'will'; about 25 of 32 are followed by 'not'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

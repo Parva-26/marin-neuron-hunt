@@ -1,0 +1,39 @@
+neuron: L58-N10386
+data: pilot/fineweb-10m-sparse
+label: pushes 'great'/'source' (+) and 'member'/'texas' (-)
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a word before a business-type noun like business, company, service, or organization;
+    about 20 of 24 are followed by such a noun. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "great", "source", "existence", "creator", "cosmic": +0.13 nats, 3x random. Contrast test failed (7
+    of 10 pairs). The firing description is the weak part: the contrast test did not confirm it. Firing token followed
+    by a steered word: 0 of 24 top examples.'
+  fires_on: Marked token is a word before a business-type noun like business, company, service, or organization;
+    about 20 of 24 are followed by such a noun.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is an adjective or noun right before ''option'', ''alternative'', or ''choice'' (e.g.
+    ''practical [option]'', ''ultimate [alternative]''); about 14 of 32 are followed by option/alternative/choice.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "member", "texas", "christian", "birds":
+    +0.13 nats, 3x random. Contrast test failed (5 of 10 pairs). The firing description is the weak part: the contrast
+    test did not confirm it. Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is an adjective or noun right before 'option', 'alternative', or 'choice' (e.g. 'practical
+    [option]', 'ultimate [alternative]'); about 14 of 32 are followed by option/alternative/choice.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
