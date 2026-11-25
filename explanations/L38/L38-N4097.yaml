@@ -1,0 +1,31 @@
+neuron: L38-N4097
+data: pilot/fineweb-10m-sparse
+label: pushes 'fact' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The marked token is usually ''Did'' or ''did'' starting a ''Did you know'' fact phrase; about 22
+    of 32 are followed by ''you'' or ''know''. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "fact", "body", "interesting": +0.16 nats, 4x random. Contrast test passed (9 of 10 pairs). Firing
+    token followed by a steered word: 2 of 32 top examples (fact).'
+  fires_on: The marked token is usually 'Did' or 'did' starting a 'Did you know' fact phrase; about 22 of 32 are
+    followed by 'you' or 'know'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [12, 16]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
