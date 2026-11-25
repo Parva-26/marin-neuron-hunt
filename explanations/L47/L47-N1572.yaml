@@ -1,0 +1,31 @@
+neuron: L47-N1572
+data: pilot/fineweb-10m-sparse
+label: pushes 'nerd'/'geek' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is the word-piece or word just before ''eks'', ''ek'', ''ds'', ''nerd'' or similar
+    geek/nerd stems, e.g. CM[[ ge]]eks, non-[[ge]]ek; about 20 of 32 precede a nerd/geek stem. In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "described", "geek", "nerd": +0.67 nats, 19x random. Contrast
+    test passed (9 of 10 pairs). Firing token followed by a steered word: 5 of 32 top examples (nerd, geek).'
+  fires_on: Marked token is the word-piece or word just before 'eks', 'ek', 'ds', 'nerd' or similar geek/nerd stems,
+    e.g. CM[[ ge]]eks, non-[[ge]]ek; about 20 of 32 precede a nerd/geek stem.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 10]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

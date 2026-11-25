@@ -1,0 +1,31 @@
+neuron: L46-N14427
+data: pilot/fineweb-10m-sparse
+label: pushes 'wealth' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token just before a wealth word, such as wealth, rich, fortune, wealthy or prosperous; about
+    12 of 32, with ''wealth'' right after it in 6. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "symbol", "wealth", "prosperity": +0.52 nats, 11x random. Contrast test passed (10 of 10 pairs). Firing
+    token followed by a steered word: 7 of 32 top examples (wealth).'
+  fires_on: Marked token just before a wealth word, such as wealth, rich, fortune, wealthy or prosperous; about
+    12 of 32, with 'wealth' right after it in 6.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 3, 8, 11, 14, 20, 23]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
