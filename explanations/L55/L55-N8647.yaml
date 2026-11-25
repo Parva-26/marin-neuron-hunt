@@ -1,0 +1,38 @@
+neuron: L55-N8647
+data: pilot/fineweb-10m-sparse
+label: pushes 'disorder'/'bipolar' (+) and 'common'/'member' (-)
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word before ''share'' or its forms (purchase, income, fair, lions, we, they);
+    about 21 of 32 are followed by ''share''/''shares''/''sharing''/''shared''. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "disorder", "bipolar": +0.13 nats, 2x random. Contrast test passed (9
+    of 10 pairs). Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is a word before 'share' or its forms (purchase, income, fair, lions, we, they); about
+    21 of 32 are followed by 'share'/'shares'/'sharing'/'shared'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'no pattern; marked tokens are varied (modal or verb, pronoun, ''to'', ''and'') with no shared next
+    word, only ''show'' and ''create'' twice each. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "common", "member", "society", "cold": +0.15 nats, 5x random. Contrast test failed (4 of 10 pairs).
+    The firing description is the weak part: the contrast test did not confirm it. Firing token followed by a steered
+    word: 0 of 32 top examples.'
+  fires_on: no pattern; marked tokens are varied (modal or verb, pronoun, 'to', 'and') with no shared next word,
+    only 'show' and 'create' twice each.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
