@@ -1,9 +1,13 @@
 # Lens fit: <lens name> for Marin 32B
 
 <!--
-Template for a lens-fit request (type E, custom). Copy it to `requests/<request id>/DESIGN.md`, for
-example `requests/tuned-lens-001/DESIGN.md`, and fill in every section. Text inside comments like this
+Template for the design of a lens-fit request (type E, custom). Copy it to `requests/<request id>/DESIGN.md`,
+for example `requests/tuned-lens-001/DESIGN.md`, and fill in every section. Text inside comments like this
 one is guidance: the design check ignores it, so replace it with your own words outside the comment.
+
+It is one of two files. The request file `requests/<request id>.yaml` (from `request-lens-fit.yaml`) holds
+the settings in a form a program can read; this file explains and justifies them. Keep the numbers the
+same in both. The Experimentation Wizard reads both.
 
 A lens decodes an internal activation into vocabulary tokens. The only lens Marin 32B has today is the
 weights-only logit lens in the atlas (`summaries/logit_lens.parquet`). You design two runs here: a small
@@ -96,7 +100,7 @@ Fix both bars before anything runs. A lens that misses its bar is still a useful
 <!--
 List at least 5 neurons that already have an explanation in `explanations/`. After the full run, their
 readout through your lens is compared with what the explanation says. Put the same neurons in the
-`neurons` field of the request file, which requires at least one.
+`neurons` field of the request file.
 -->
 
 - **Neurons:**

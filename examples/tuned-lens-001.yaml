@@ -1,0 +1,45 @@
+# FORMAT EXAMPLE ONLY: not a live request, and its numbers are made up to show the fields. A real one goes in
+# requests/<name>-<nnn>.yaml with its design in requests/<name>-<nnn>/DESIGN.md.
+type: custom
+neurons: [L42-N5277, L46-N13411, L47-N16894, L57-N25368, L57-N5873]
+title: "Fit a tuned lens to Marin 32B from the atlas's stored residual stream"
+procedure: |
+  For each layer 0 to 63, fit one affine map from the residual stream entering that layer to the final
+  residual, by least squares on stored activations (no backward passes). The final residual is recomputed
+  by running the last block on the stored layer-63 residuals. Decode with the model's own final norm and
+  unembedding. Run the pilot first; run the full fit only if the pilot passes its bar. Then read the five
+  listed neurons' output vectors through the lens and compare with their explanations.
+prediction: >-
+  At layers 0 to 30 the tuned lens matches the model's own top next token more often than the atlas logit
+  lens does.
+pass_rule: >-
+  On held-out text, top-1 agreement with the model's final prediction beats the logit lens by at least 10
+  points at 20 or more of layers 0 to 30.
+refuted_if: "The tuned lens beats the logit lens by 10 points at fewer than 5 of layers 0 to 30."
+compute: "Pilot: CPU only, about 1 hour. Full run: one GPU for the last-block recompute, under 2 hours."
+outputs: "One map per layer, the fit log, per-layer agreement for both lenses, and the five neurons' readouts."
+lens_fit:
+  lens: tuned-lens
+  follows: "Belrose et al. 2023, Eliciting Latent Predictions from Transformers with the Tuned Lens (arXiv 2303.08112)"
+  fit_text: "pilot/fineweb-1m resid docs, model revision f19b3466, minus the held-out docs"
+  heldout_text: "50 resid docs of pilot/fineweb-1m, chosen by doc_id before fitting and never fitted on"
+  passage_tokens: 128
+  bos: true
+  baseline: "the atlas logit lens on the same held-out text"
+  pilot:
+    passages: 100
+    layers: "0, 16, 32, 48"
+    settings: "least squares with ridge 1e-3, fp32"
+    compute: "CPU only, about 1 hour"
+    bar: "Two fits on disjoint halves agree within 2 points of top-1 agreement at every pilot layer."
+  full_run:
+    passages: 2000
+    layers: "all"
+    settings: "same as the pilot"
+    stop_when: "All 2000 passages are used; there is no early stop."
+    compute: "one GPU, under 2 hours"
+    bar: "Beats the logit lens by at least 10 points at 20 or more of layers 0 to 30."
+    failed_if: "Beats the logit lens by 10 points at fewer than 5 of layers 0 to 30."
+  publish: ["lens files", "fit log", "per-layer scores", "per-neuron readout table"]
+by:
+  - {github: likelytobelaura, method: agent, model: claude-fable-5-2}

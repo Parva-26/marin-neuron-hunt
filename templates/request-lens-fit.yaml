@@ -1,0 +1,38 @@
+# TEMPLATE: a lens fit (type E, custom). Copy to requests/<name>-<nnn>.yaml, e.g. requests/tuned-lens-001.yaml, and
+# fill it in. The design goes beside it in requests/<name>-<nnn>/DESIGN.md, from lens-fit-DESIGN.md in this
+# folder. Keep the two in step: this file holds the settings, the design explains them. examples/tuned-lens-001.yaml
+# is a filled-in one. See EXPERIMENTS.md.
+type: custom
+neurons: [L40-N25546, ...]    # at least 5 already-explained neurons to check the finished lens on
+title: "Fit a <lens name> to Marin 32B"
+procedure: |
+  ...
+prediction: "..."             # what the lens should read out that the atlas logit lens can't, and at which layers
+pass_rule: "..."              # the bar for the full run
+refuted_if: "..."
+compute: "..."                # pilot and full run together
+outputs: "..."
+lens_fit:
+  lens: "..."                 # e.g. tuned-lens, j-lens
+  follows: "..."              # the paper and code you are following
+  fit_text: "..."             # ordinary passages, not questions; name the source and version
+  heldout_text: "..."         # what the lens is evaluated on; must not overlap fit_text
+  passage_tokens: 128
+  bos: false                  # whether a BOS token is prepended; the lens encodes this choice
+  baseline: "the atlas logit lens on the held-out text"
+  pilot:
+    passages: 100
+    layers: "all"
+    settings: "..."
+    compute: "..."
+    bar: "..."                # what the pilot must show before the full run
+  full_run:
+    passages: 1000
+    layers: "all"
+    settings: "..."
+    stop_when: "..."
+    compute: "..."
+    bar: "..."
+    failed_if: "..."
+  publish: ["lens files", "fit log", "per-layer scores", "per-neuron readout table"]
+by: {github: your-handle, method: human}
