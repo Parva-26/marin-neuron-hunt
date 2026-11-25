@@ -1,0 +1,32 @@
+neuron: L43-N7144
+data: pilot/fineweb-10m-sparse
+label: predicts 'lighting' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'about 8 of 14 marked tokens are words inside photography/lighting-advice text (is, made, natural,
+    good, have, on) followed by light/lighting-related words; no single next-word cue dominates. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "professional", "lighting", "specialist", "photographer":
+    +0.24 nats, 8x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 4 of
+    14 top examples (lighting).'
+  fires_on: about 8 of 14 marked tokens are words inside photography/lighting-advice text (is, made, natural, good,
+    have, on) followed by light/lighting-related words; no single next-word cue dominates.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [3, 9]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

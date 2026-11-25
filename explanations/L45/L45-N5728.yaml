@@ -1,0 +1,32 @@
+neuron: L45-N5728
+data: pilot/fineweb-10m-sparse
+label: predicts 'bottle'/'formula' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is usually a word before ''bottle'', ''formula'', ''milk'', or ''breast'' context,
+    such as ''to'', ''a'', ''milk'' (about 9 of 20 precede bottle/milk/breast-related words). In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "brown", "formula", "bottle", "warmer": +0.32 nats, 9x
+    random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 5 of 20 top examples
+    (bottle, formula).'
+  fires_on: Marked token is usually a word before 'bottle', 'formula', 'milk', or 'breast' context, such as 'to',
+    'a', 'milk' (about 9 of 20 precede bottle/milk/breast-related words).
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 5, 6, 8, 11]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

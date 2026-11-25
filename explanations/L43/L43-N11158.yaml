@@ -1,0 +1,31 @@
+neuron: L43-N11158
+data: pilot/fineweb-10m-sparse
+label: predicts 'location' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is a word right before ''location'' or ''where'' or a place-related word; about 14
+    of 32 precede location, locations, where, or position-related words. In tumanian''s steering sweep (this side
+    set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "place", "location", "prime": +0.83 nats, 21x random. Contrast test passed
+    (9 of 10 pairs). Firing token followed by a steered word: 10 of 32 top examples (location).'
+  fires_on: Marked token is a word right before 'location' or 'where' or a place-related word; about 14 of 32 precede
+    location, locations, where, or position-related words.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 3, 7, 8, 11, 13, 17, 29, 30, 31]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

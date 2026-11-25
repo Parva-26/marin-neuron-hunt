@@ -1,0 +1,31 @@
+neuron: L37-N18408
+data: pilot/fineweb-10m-sparse
+label: predicts 'refund'/'full' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'The token right before a refund-type object, such as ''get'', ''a'', ''to'', ''give you'', or ''of''
+    preceding ''full refund'' or ''refund''; about 20 of 32 are followed by refund/full/money. In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "full", "policy", "refund": +0.20 nats, 6x random. Contrast
+    test passed (8 of 10 pairs). Firing token followed by a steered word: 11 of 32 top examples (refund, full).'
+  fires_on: The token right before a refund-type object, such as 'get', 'a', 'to', 'give you', or 'of' preceding
+    'full refund' or 'refund'; about 20 of 32 are followed by refund/full/money.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 4, 9, 10, 11, 13, 15, 21, 23, 24, 26]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

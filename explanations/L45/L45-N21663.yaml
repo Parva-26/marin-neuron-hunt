@@ -1,0 +1,32 @@
+neuron: L45-N21663
+data: pilot/fineweb-10m-sparse
+label: predicts 'divorce' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is the word before ''divorce'' or ''divorced'' in a marriage-breakup context, e.g.
+    ''messy[[ divorce]]'' or ''later divorced''; about 10 of 32 are followed by divorce/divorced. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "through", "going", "recently", "divorce", "divorced":
+    +0.32 nats, 9x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 11 of
+    32 top examples (divorce).'
+  fires_on: Marked token is the word before 'divorce' or 'divorced' in a marriage-breakup context, e.g. 'messy[[
+    divorce]]' or 'later divorced'; about 10 of 32 are followed by divorce/divorced.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 4, 5, 6, 9, 18, 19, 20, 22, 25, 28]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

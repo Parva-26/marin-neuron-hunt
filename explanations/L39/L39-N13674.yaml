@@ -1,0 +1,28 @@
+neuron: L39-N13674
+data: pilot/fineweb-10m-sparse
+label: predicts 'typical' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'fires on a/the/your before average/typical/usual (about 20 of 32). In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "typical", "ordinary": +0.80 nats, 27x random. Contrast test
+    passed (8 of 10 pairs). Firing token followed by a steered word: 8 of 32 top examples (typical).'
+  fires_on: fires on a/the/your before average/typical/usual (about 20 of 32)
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [4, 5, 6, 7, 9, 12, 27, 30]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: human

@@ -1,0 +1,32 @@
+neuron: L41-N15530
+data: pilot/fineweb-10m-sparse
+label: predicts 'trip'/'business' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is a word right before a trip/vacation/holiday/business noun phrase or its modifier,
+    e.g. ''going[[ on]]'' before vacation, ''business[[ ]]'' before trip; about 20 of 32 precede trip/vacation/business
+    words. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "business", "family", "trip", "planner":
+    +0.32 nats, 9x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 10 of
+    32 top examples (trip, business, family).'
+  fires_on: Marked token is a word right before a trip/vacation/holiday/business noun phrase or its modifier, e.g.
+    'going[[ on]]' before vacation, 'business[[ ]]' before trip; about 20 of 32 precede trip/vacation/business words.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [5, 6, 8, 9, 10, 12, 15, 16, 17, 23]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

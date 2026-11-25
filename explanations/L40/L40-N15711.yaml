@@ -1,0 +1,32 @@
+neuron: L40-N15711
+data: pilot/fineweb-10m-sparse
+label: predicts 'board'/'school' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is a word right before an official governing body noun like board, council, or committee;
+    the next word is often ''board'', ''city'', or ''the'' (about 6 of 32 ''board'', 5 ''the'', 3 ''city''). In
+    tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "board", "school", "member": +0.48
+    nats, 14x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 8 of 32 top
+    examples (board, school).'
+  fires_on: Marked token is a word right before an official governing body noun like board, council, or committee;
+    the next word is often 'board', 'city', or 'the' (about 6 of 32 'board', 5 'the', 3 'city').
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 3, 5, 12, 21, 23, 24, 25]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

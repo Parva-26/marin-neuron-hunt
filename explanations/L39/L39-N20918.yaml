@@ -1,0 +1,32 @@
+neuron: L39-N20918
+data: pilot/fineweb-10m-sparse
+label: predicts 'member'/'participant' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is an article or adjective right before ''member'' or ''members'' (e.g. ''an [active]
+    member'', ''a member''); about 20 of 32 are followed by ''member(s)''. In tumanian''s steering sweep (this side
+    set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "member", "physics", "participant", "berkeley", "outreach": +0.20 nats,
+    6x random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 15 of 32 top examples
+    (member, participant).'
+  fires_on: Marked token is an article or adjective right before 'member' or 'members' (e.g. 'an [active] member',
+    'a member'); about 20 of 32 are followed by 'member(s)'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 1, 2, 3, 5, 6, 7, 8, 17, 19, 21, 24, 28, 30, 31]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

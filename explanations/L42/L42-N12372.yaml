@@ -1,0 +1,31 @@
+neuron: L42-N12372
+data: pilot/fineweb-10m-sparse
+label: predicts 'tour' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Token right before ''tour'' or a tour-related word, such as ''UK'', ''Death Magnetic'', ''upcoming'',
+    ''US'', ''a'', ''major''; about 13 of 32 are followed directly by ''tour''. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "operator", "band", "tour", "touring": +0.38 nats, 12x random. Contrast
+    test passed (10 of 10 pairs). Firing token followed by a steered word: 16 of 32 top examples (tour).'
+  fires_on: Token right before 'tour' or a tour-related word, such as 'UK', 'Death Magnetic', 'upcoming', 'US',
+    'a', 'major'; about 13 of 32 are followed directly by 'tour'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 1, 2, 3, 5, 8, 9, 11, 14, 15, 17, 20, 22, 26, 28]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
