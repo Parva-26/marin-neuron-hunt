@@ -1,0 +1,8 @@
+# TEMPLATE: ablation (type C). Copy to requests/<neuron>-<nnn>.yaml and fill it in. See EXPERIMENTS.md.
+type: ablation
+neurons: [L40-N25546]   # one or more
+mode: zero              # or mean
+prompts: ["... [[target]] ...", ...]  # >= 10
+metric: {kind: next-token-logprob, token: " vice"}   # or {kind: loss}
+predicted_effect: -1.0  # change in the metric, in nats
+by: {github: your-handle, method: human}

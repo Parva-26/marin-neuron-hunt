@@ -13,7 +13,7 @@ for the request types, and [CONTRIBUTING.md](CONTRIBUTING.md) for how to design 
 - Put the model or agent in `by`, as `method: agent` with `model: ...`.
 - Run `python scripts/validate.py` before any PR.
 - Never put format examples under `explanations/`. Only real explanations go there, and examples go
-  in `examples/`.
+  in `examples/`. Blank templates to copy are in `templates/`.
 
 ## Helping someone design an explanation or request
 

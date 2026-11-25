@@ -12,7 +12,49 @@
     "side": {"enum": ["+", "-"]},
     "prompt": {"type": "string", "pattern": "\\[\\[[^\\]]+\\]\\]", "maxLength": 4000, "description": "mark the target token with [[ ]]"},
     "prompts": {"type": "array", "minItems": 10, "items": {"$ref": "#/$defs/prompt"}},
-    "by": {"$ref": "explanation.schema.json#/$defs/by"}
+    "by": {"$ref": "explanation.schema.json#/$defs/by"},
+    "lens_fit": {
+      "type": "object",
+      "description": "the settings of a lens fit: a custom request that fits a lens to Marin 32B",
+      "additionalProperties": false,
+      "required": ["lens", "follows", "fit_text", "heldout_text", "passage_tokens", "bos", "pilot", "full_run"],
+      "properties": {
+        "lens": {"type": "string", "minLength": 1, "description": "e.g. tuned-lens, j-lens"},
+        "follows": {"type": "string", "minLength": 1, "description": "the paper and code the fit follows"},
+        "fit_text": {"type": "string", "minLength": 1, "description": "the text the lens is fitted on"},
+        "heldout_text": {"type": "string", "minLength": 1, "description": "the text it is evaluated on; no overlap with fit_text"},
+        "passage_tokens": {"type": "integer", "minimum": 1},
+        "bos": {"type": "boolean", "description": "whether a BOS token is prepended"},
+        "baseline": {"type": "string", "description": "what the lens is compared with; the atlas logit lens if left out"},
+        "pilot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["passages", "layers", "compute", "bar"],
+          "properties": {
+            "passages": {"type": "integer", "minimum": 1},
+            "layers": {"type": "string", "minLength": 1, "description": "e.g. all, or 0-30"},
+            "settings": {"type": "string"},
+            "compute": {"type": "string", "minLength": 1},
+            "bar": {"type": "string", "minLength": 1, "description": "what the pilot must show before the full run"}
+          }
+        },
+        "full_run": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["passages", "layers", "stop_when", "compute", "bar", "failed_if"],
+          "properties": {
+            "passages": {"type": "integer", "minimum": 1},
+            "layers": {"type": "string", "minLength": 1},
+            "settings": {"type": "string"},
+            "stop_when": {"type": "string", "minLength": 1},
+            "compute": {"type": "string", "minLength": 1},
+            "bar": {"type": "string", "minLength": 1},
+            "failed_if": {"type": "string", "minLength": 1}
+          }
+        },
+        "publish": {"type": "array", "items": {"type": "string"}, "description": "what to publish: lens files, fit log, per-layer scores, ..."}
+      }
+    }
   },
   "allOf": [
     {
@@ -103,6 +145,7 @@
           "refuted_if": {"type": "string", "minLength": 1},
           "compute": {"type": "string", "minLength": 1},
           "outputs": {"type": "string"},
+          "lens_fit": {"$ref": "#/$defs/lens_fit"},
           "by": {"$ref": "#/$defs/by"}
         }
       }

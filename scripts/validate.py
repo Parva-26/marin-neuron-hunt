@@ -15,6 +15,8 @@ from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUEST_ID = re.compile(r"^(L\d+-N\d+)-(\d{3})$")
+# A custom request that isn't about one neuron (a lens fit, a screen): e.g. tuned-lens-001.
+CUSTOM_ID = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*-\d{3}$")
 
 
 def load_schemas():
@@ -66,7 +68,9 @@ def check_request(path, data, validator, errors):
     schema_errors(validator, data, path, errors)
     m = REQUEST_ID.match(path.stem)
     if not m:
-        errors.append(f"{path}: name it <neuron>-<nnn>.yaml, e.g. L40-N25546-001.yaml")
+        if data.get("type") != "custom" or not CUSTOM_ID.match(path.stem):
+            errors.append(f"{path}: name it <neuron>-<nnn>.yaml, e.g. L40-N25546-001.yaml (a custom request "
+                          f"that isn't about one neuron can be <name>-<nnn>.yaml, e.g. tuned-lens-001.yaml)")
         return
     named = data.get("neuron") or (data.get("neurons") or [None])[0]
     if named != m.group(1):
@@ -113,7 +117,7 @@ def main():
         data = load_yaml(path, errors)
         if data is None:
             continue
-        if REQUEST_ID.match(path.stem):
+        if REQUEST_ID.match(path.stem) or "type" in data:
             check_request(path, data, validators["request"], errors)
         else:
             check_explanation(path, data, validators["explanation"], errors, example=True)

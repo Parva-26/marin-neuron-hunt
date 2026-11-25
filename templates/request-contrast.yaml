@@ -1,0 +1,8 @@
+# TEMPLATE: contrast test (type D). Copy to requests/<neuron>-<nnn>.yaml and fill it in. See EXPERIMENTS.md.
+type: contrast
+neuron: L40-N25546
+side: "+"
+pairs:
+  - {high: "... [[target]] ...", low: "... [[target]] ..."}   # >= 10 pairs
+  - {high: "<exemplar text> [[target]] ...", low: "<same, one change> [[target]] ..."}
+by: {github: your-handle, method: human}

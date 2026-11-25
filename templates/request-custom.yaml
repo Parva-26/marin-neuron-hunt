@@ -1,0 +1,13 @@
+# TEMPLATE: your own experiment (type E). Copy to requests/<neuron>-<nnn>.yaml and fill it in. The design goes
+# in requests/<request id>/DESIGN.md (from DESIGN.md or lens-fit-DESIGN.md in this folder). See EXPERIMENTS.md.
+type: custom
+neurons: [L40-N25546]
+title: "..."
+procedure: |
+  ...
+prediction: "..."
+pass_rule: "..."
+refuted_if: "..."
+compute: "about N forward passes of up to M tokens"
+outputs: "..."
+by: {github: your-handle, method: human}

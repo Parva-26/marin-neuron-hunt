@@ -1,0 +1,9 @@
+# TEMPLATE: steering (type B). Copy to requests/<neuron>-<nnn>.yaml and fill it in. See EXPERIMENTS.md.
+type: steering
+neuron: L40-N25546
+side: "+"
+k: 4
+prompts: ["... [[target]]", ...]   # >= 10; steering applies at the marked token
+expect_up: [" vice", " Conversely"]
+expect_down: []
+by: {github: your-handle, method: agent, model: "..."}
