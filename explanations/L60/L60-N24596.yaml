@@ -1,0 +1,33 @@
+neuron: L60-N24596
+data: pilot/fineweb-10m-sparse
+label: pushes 'device'/'platform'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Mostly a function word or adverb right before a predicate/adjective: ''can'', ''going'', ''a'',
+    ''are'', ''quickly/rapidly''-type continuations; about 8 of 26 are followed by quickly/rapidly/terrific/intriguing-type
+    adverbs or adjectives. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token,
+    next-token log-probability change compared with random neurons of the same layer and side), it raised "device",
+    "platform", "average": +0.21 nats, 3x random. Contrast test failed (3 of 10 pairs). The firing description is
+    the weak part: the contrast test did not confirm it. Firing token followed by a steered word: 0 of 26 top examples.'
+  fires_on: 'Mostly a function word or adverb right before a predicate/adjective: ''can'', ''going'', ''a'', ''are'',
+    ''quickly/rapidly''-type continuations; about 8 of 26 are followed by quickly/rapidly/terrific/intriguing-type
+    adverbs or adjectives.'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

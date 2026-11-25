@@ -1,0 +1,29 @@
+neuron: L58-N27021
+data: pilot/fineweb-10m-sparse
+label: pushes 'production'/'producer'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'fires before manufacturing/production/produce/generated words (min -768). In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "based", "production", "independent", "paris", "producer":
+    +0.95 nats, 25x random. Contrast test failed (3 of 10 pairs). The firing description is the weak part: the contrast
+    test did not confirm it. Firing token followed by a steered word: 5 of 32 top examples (production, producer).'
+  fires_on: fires before manufacturing/production/produce/generated words (min -768)
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 10, 20, 21, 27]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: human

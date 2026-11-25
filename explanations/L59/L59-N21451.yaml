@@ -1,0 +1,32 @@
+neuron: L59-N21451
+data: pilot/fineweb-10m-sparse
+label: pushes 'rock'/'band'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a word right before a verb or object phrase in generic web text; following words
+    are mixed, with no single cue (about 6 of 32 followed by ''and'', 4 by ''the'', 4 by ''via''). In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "rock", "band", "texas", "alternative", "houston":
+    +0.21 nats, 4x random. Contrast test failed (4 of 10 pairs). The firing description is the weak part: the contrast
+    test did not confirm it. Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is a word right before a verb or object phrase in generic web text; following words are
+    mixed, with no single cue (about 6 of 32 followed by 'and', 4 by 'the', 4 by 'via').
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

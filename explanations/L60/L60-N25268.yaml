@@ -1,0 +1,34 @@
+neuron: L60-N25268
+data: pilot/fineweb-10m-sparse
+label: pushes 'world'/'earth'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a determiner, adverb, or function word before a predicate or noun phrase (a, very,
+    so, also, and); next words are varied adjectives like little, safe, large, strong; no single cue; about 6 of
+    32 precede safe/large/strong-type adjectives. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "world", "earth", "universe": +0.49 nats, 9x random. Contrast test failed (6 of 10 pairs). The firing
+    description is the weak part: the contrast test did not confirm it. Firing token followed by a steered word:
+    0 of 32 top examples.'
+  fires_on: Marked token is a determiner, adverb, or function word before a predicate or noun phrase (a, very, so,
+    also, and); next words are varied adjectives like little, safe, large, strong; no single cue; about 6 of 32
+    precede safe/large/strong-type adjectives.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
