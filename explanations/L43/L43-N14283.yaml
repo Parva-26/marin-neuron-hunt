@@ -1,0 +1,38 @@
+neuron: L43-N14283
+data: pilot/fineweb-10m-sparse
+label: pushes 'advocate' (+) and 'science'/'portal' (-)
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a function word or verb before a noun phrase (is, to, be, best, by, of); next words
+    vary, no shared cue, about 0 of 7 share a word. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "advocate": +0.29 nats, 5x random. Contrast test failed (7 of 10 pairs). The firing description is
+    the weak part: the contrast test did not confirm it. Firing token followed by a steered word: 0 of 7 top examples.'
+  fires_on: Marked token is a function word or verb before a noun phrase (is, to, be, best, by, of); next words
+    vary, no shared cue, about 0 of 7 share a word.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'No clear pattern: marked tokens are scattered across punctuation, digits, years, and function words,
+    with no shared following word (about 6 of 32 are followed by an apostrophe fragment, the rest vary). In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "science", "portal": +0.16 nats, 3x random. Contrast
+    test failed (4 of 10 pairs). The firing description is the weak part: the contrast test did not confirm it.
+    Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: 'No clear pattern: marked tokens are scattered across punctuation, digits, years, and function words,
+    with no shared following word (about 6 of 32 are followed by an apostrophe fragment, the rest vary).'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

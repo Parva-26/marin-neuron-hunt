@@ -1,0 +1,32 @@
+neuron: L43-N18824
+data: pilot/fineweb-10m-sparse
+label: pushes 'preparing'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'The marked token is a verb or comma right before ''ready'', ''prepared'', or ''sure'' (e.g. ''be'',
+    ''get'' before ready/prepared); about 20 of 32 are ''be''/''get'' before a readiness adjective. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "encounter", "preparing", "romantic": +0.34 nats,
+    12x random. Contrast test failed (5 of 10 pairs). The firing description is the weak part: the contrast test
+    did not confirm it. Firing token followed by a steered word: 1 of 32 top examples (preparing).'
+  fires_on: The marked token is a verb or comma right before 'ready', 'prepared', or 'sure' (e.g. 'be', 'get' before
+    ready/prepared); about 20 of 32 are 'be'/'get' before a readiness adjective.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [15]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
