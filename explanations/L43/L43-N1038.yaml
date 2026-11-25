@@ -1,0 +1,33 @@
+neuron: L43-N1038
+data: pilot/fineweb-10m-sparse
+label: pushes 'bolt' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is mostly the space or word just before a fastener/tool-related noun or action, e.g.
+    ''the'', ''a'', ''them'', ''down'' before torque or unscrew contexts; next words are varied (the x3, a, them),
+    about 3 of 27 share ''the''. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral
+    token, next-token log-probability change compared with random neurons of the same layer and side), it raised
+    "described", "screw", "bolt": +0.31 nats, 8x random. Contrast test passed (10 of 10 pairs). Firing token followed
+    by a steered word: 1 of 27 top examples (bolt).'
+  fires_on: Marked token is mostly the space or word just before a fastener/tool-related noun or action, e.g. 'the',
+    'a', 'them', 'down' before torque or unscrew contexts; next words are varied (the x3, a, them), about 3 of 27
+    share 'the'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [7]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

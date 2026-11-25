@@ -1,0 +1,38 @@
+neuron: L43-N12312
+data: pilot/fineweb-10m-sparse
+label: pushes 'vote' (+) and 'participant'/'fundraising' (-)
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is mid-phrase in election/voting talk, often before ''votes'', ''ballot'', ''vote'',
+    or ''of/the''; about 9 of 27 are followed by vote/ballot-related words. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "first", "ever", "vote", "dedicated", "preparing": +0.27 nats, 8x random.
+    Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 6 of 27 top examples (vote).'
+  fires_on: Marked token is mid-phrase in election/voting talk, often before 'votes', 'ballot', 'vote', or 'of/the';
+    about 9 of 27 are followed by vote/ballot-related words.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [5, 10, 11, 15, 20, 22]
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a space or number/money prefix right before a number (e.g. ''[[ ]]3'', ''[[ $]]82,383,361'');
+    next word is a numeral or amount, about 25 of 32. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "participant", "fundraising", "blogger": +0.12 nats, 3x random. Contrast test failed (5 of 10 pairs).
+    The firing description is the weak part: the contrast test did not confirm it. Firing token followed by a steered
+    word: 0 of 32 top examples.'
+  fires_on: Marked token is a space or number/money prefix right before a number (e.g. '[[ ]]3', '[[ $]]82,383,361');
+    next word is a numeral or amount, about 25 of 32.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

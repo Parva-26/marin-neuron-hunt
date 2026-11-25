@@ -1,0 +1,33 @@
+neuron: L43-N12906
+data: pilot/fineweb-10m-sparse
+label: pushes 'alone'/'prefers' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is the word just before ''vert'' or ''mit'' or ''shy'' in introvert/hermit-type words,
+    e.g. ''intro[[vert]]'' or ''an[[ intro]]vert''; about 10 of 32 are a split introvert/hermit word piece, and
+    the next word is ''vert'' in 5 of 32. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at
+    a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "alone", "prefers", "solitary": +0.42 nats, 8x random. Contrast test passed (9 of 10 pairs). Firing
+    token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is the word just before 'vert' or 'mit' or 'shy' in introvert/hermit-type words, e.g. 'intro[[vert]]'
+    or 'an[[ intro]]vert'; about 10 of 32 are a split introvert/hermit word piece, and the next word is 'vert' in
+    5 of 32.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [2]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

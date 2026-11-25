@@ -1,0 +1,31 @@
+neuron: L42-N24686
+data: pilot/fineweb-10m-sparse
+label: pushes 'working'/'team' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is the word right before ''together'' (work, band, stick, pulled, pulling); about 14
+    of 32 are followed by ''together'' and a few more by ''in this together''. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "people", "team", "working", "collective": +0.23 nats, 8x random. Contrast
+    test passed (10 of 10 pairs). Firing token followed by a steered word: 2 of 32 top examples (working, team).'
+  fires_on: Marked token is the word right before 'together' (work, band, stick, pulled, pulling); about 14 of 32
+    are followed by 'together' and a few more by 'in this together'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [5, 28]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

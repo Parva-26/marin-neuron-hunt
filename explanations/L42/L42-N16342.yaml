@@ -1,0 +1,38 @@
+neuron: L42-N16342
+data: pilot/fineweb-10m-sparse
+label: pushes 'custody'/'children' (+) and 'wife' (-)
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is mostly mid-phrase in custody/support legal text; about 5 of 26 are followed by ''custody''
+    and few by a predicted word, so the cue is weak. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "full", "children", "father", "custody": +0.20 nats, 6x random. Contrast test passed (10 of 10 pairs).
+    Firing token followed by a steered word: 6 of 26 top examples (custody, children).'
+  fires_on: Marked token is mostly mid-phrase in custody/support legal text; about 5 of 26 are followed by 'custody'
+    and few by a predicted word, so the cue is weak.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [5, 7, 17, 20, 21, 24]
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Tokens inside family/marriage/parenting phrases before a noun, e.g. ''the[[ the]] age'', ''former''
+    before wife/spouse, ''divorced''; next words mostly ''the'', ''father'', ''wife'', ''a''. Weak, no tight cue.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "wife", "husband", "married": +0.21
+    nats, 4x random. Contrast test passed (8 of 10 pairs). Firing token followed by a steered word: 2 of 32 top
+    examples (wife).'
+  fires_on: Tokens inside family/marriage/parenting phrases before a noun, e.g. 'the[[ the]] age', 'former' before
+    wife/spouse, 'divorced'; next words mostly 'the', 'father', 'wife', 'a'. Weak, no tight cue.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [2, 9]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
