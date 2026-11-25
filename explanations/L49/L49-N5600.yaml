@@ -1,0 +1,32 @@
+neuron: L49-N5600
+data: pilot/fineweb-10m-sparse
+label: predicts 'employee' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Commas or possessive/determiner tokens right before a list of roles like employees, agents, directors,
+    officers; about 10 of 32 are followed by ''employees'' and others by ''agents'' or ''directors''. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "service", "united", "states", "employee", "postal":
+    +0.27 nats, 7x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 11 of
+    32 top examples (employee).'
+  fires_on: Commas or possessive/determiner tokens right before a list of roles like employees, agents, directors,
+    officers; about 10 of 32 are followed by 'employees' and others by 'agents' or 'directors'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [5, 6, 8, 9, 12, 14, 20, 21, 25, 30, 31]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

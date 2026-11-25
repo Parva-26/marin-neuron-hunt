@@ -1,0 +1,31 @@
+neuron: L48-N11071
+data: pilot/fineweb-10m-sparse
+label: predicts 'true' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked verb of staying or sticking (stayed, staying, stuck, stays) that is followed by ''true'',
+    ''to'', or ''on''; about 20 of 32 are stay/stick verbs. In tumanian''s steering sweep (this side set to k x
+    scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons of the same
+    layer and side), it raised "true", "friend": +0.23 nats, 6x random. Contrast test passed (9 of 10 pairs). Firing
+    token followed by a steered word: 10 of 32 top examples (true).'
+  fires_on: Marked verb of staying or sticking (stayed, staying, stuck, stays) that is followed by 'true', 'to',
+    or 'on'; about 20 of 32 are stay/stick verbs.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 1, 3, 4, 7, 9, 18, 20, 26, 28]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
