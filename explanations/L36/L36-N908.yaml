@@ -1,0 +1,32 @@
+neuron: L36-N908
+data: pilot/fineweb-10m-sparse
+label: pushes 'camera'/'recording'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token sits just before a camera/recording/photo-related word or its object, e.g. ''forgot[[
+    my]] camera'', ''captured by[[ a]] video camera''; about 20 of 32 precede camera, photo, or film words. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "camera", "recording": +0.60 nats, 16x random. Contrast
+    test failed (5 of 10 pairs). The firing description is the weak part: the contrast test did not confirm it.
+    Firing token followed by a steered word: 5 of 32 top examples (camera, recording).'
+  fires_on: Marked token sits just before a camera/recording/photo-related word or its object, e.g. 'forgot[[ my]]
+    camera', 'captured by[[ a]] video camera'; about 20 of 32 precede camera, photo, or film words.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 8, 10, 27]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

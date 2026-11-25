@@ -1,0 +1,34 @@
+neuron: L38-N24926
+data: pilot/fineweb-10m-sparse
+label: pushes 'parent'/'third'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is an adjective or modifier right before a noun phrase describing a role or group,
+    e.g. ''top'', ''regular'', ''good'', ''team'', ''eventual''; about 10 of 32 are followed by a role noun or group
+    term but no single next word repeats. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at
+    a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "parent", "third": +0.14 nats, 4x random. Contrast test failed (7 of 10 pairs). The firing description
+    is the weak part: the contrast test did not confirm it. Firing token followed by a steered word: 0 of 32 top
+    examples.'
+  fires_on: Marked token is an adjective or modifier right before a noun phrase describing a role or group, e.g.
+    'top', 'regular', 'good', 'team', 'eventual'; about 10 of 32 are followed by a role noun or group term but no
+    single next word repeats.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
