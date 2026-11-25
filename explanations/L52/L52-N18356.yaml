@@ -1,0 +1,32 @@
+neuron: L52-N18356
+data: pilot/fineweb-10m-sparse
+label: pushes 'adult'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is the word just before an age/maturity word like grown, adult, adults, adulthood (e.g.,
+    ''as an'', ''nearly'', ''when I''); about 20 of 32 precede grown/adult-type words. In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "adult", "unspecified": +1.56 nats, 33x random. Contrast test
+    not run). The firing description is the weak part: the contrast test did not confirm it. Firing token followed
+    by a steered word: 8 of 32 top examples (adult).'
+  fires_on: Marked token is the word just before an age/maturity word like grown, adult, adults, adulthood (e.g.,
+    'as an', 'nearly', 'when I'); about 20 of 32 precede grown/adult-type words.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [7, 10, 15, 21, 23, 24, 26, 31]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

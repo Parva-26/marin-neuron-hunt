@@ -1,0 +1,34 @@
+neuron: L51-N654
+data: pilot/fineweb-10m-sparse
+label: pushes 'industry'/'mother'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Tokens right before a modifier or noun phrase in business/telecom descriptions (e.g. ''provides[[
+    affordable]]'', ''and'', ''business''); next words are varied, about 6 of 32 are ''and''/''it''/''the''-type
+    or ''provides''-like, no single cue. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a
+    neutral token, next-token log-probability change compared with random neurons of the same layer and side), it
+    raised "industry", "mother", "wife", "hosting", "advocate": +0.14 nats, 4x random. Contrast test not run). The
+    firing description is the weak part: the contrast test did not confirm it. Firing token followed by a steered
+    word: 0 of 32 top examples.'
+  fires_on: Tokens right before a modifier or noun phrase in business/telecom descriptions (e.g. 'provides[[ affordable]]',
+    'and', 'business'); next words are varied, about 6 of 32 are 'and'/'it'/'the'-type or 'provides'-like, no single
+    cue.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

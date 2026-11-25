@@ -1,0 +1,32 @@
+neuron: L47-N17546
+data: pilot/fineweb-10m-sparse
+label: pushes 'city'/'services'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked tokens are mostly mid-sentence function words or verbs before a clause or name, with no shared
+    next word; next words are varied (a, ray, ronaldo, big, inter). About 1 of 6 shown next-words repeat. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "city", "services", "resident", "newcastle": +0.17
+    nats, 5x random. Contrast test failed (5 of 10 pairs). The firing description is the weak part: the contrast
+    test did not confirm it. Firing token followed by a steered word: 0 of 24 top examples.'
+  fires_on: Marked tokens are mostly mid-sentence function words or verbs before a clause or name, with no shared
+    next word; next words are varied (a, ray, ronaldo, big, inter). About 1 of 6 shown next-words repeat.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

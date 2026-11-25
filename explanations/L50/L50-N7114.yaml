@@ -1,0 +1,32 @@
+neuron: L50-N7114
+data: pilot/fineweb-10m-sparse
+label: pushes 'brian'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Punctuation, line breaks, or digits inside OCR-garbled or newspaper text, followed by miscellaneous
+    words; no shared next word (about 5 of 29 followed by an apostrophe-like or split token). In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "brian": +0.52 nats, 8x random. Contrast test failed (5
+    of 10 pairs). The firing description is the weak part: the contrast test did not confirm it. Firing token followed
+    by a steered word: 0 of 29 top examples.'
+  fires_on: Punctuation, line breaks, or digits inside OCR-garbled or newspaper text, followed by miscellaneous
+    words; no shared next word (about 5 of 29 followed by an apostrophe-like or split token).
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
