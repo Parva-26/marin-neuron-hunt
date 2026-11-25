@@ -1,0 +1,32 @@
+neuron: L40-N15740
+data: pilot/fineweb-10m-sparse
+label: pushes 'experienced'/'lifestyle' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word right before a verb or comparative about outcome/dominance, like ''outweigh'',
+    ''prevail'', ''stronger''; about 12 of 32 precede outweigh/prevail/stronger-type words or pros/cons subjects.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "experienced", "lifestyle", "dominant",
+    "bdsm": +0.16 nats, 6x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word:
+    0 of 32 top examples.'
+  fires_on: Marked token is a word right before a verb or comparative about outcome/dominance, like 'outweigh',
+    'prevail', 'stronger'; about 12 of 32 precede outweigh/prevail/stronger-type words or pros/cons subjects.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

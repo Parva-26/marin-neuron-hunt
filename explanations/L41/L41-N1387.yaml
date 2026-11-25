@@ -1,0 +1,32 @@
+neuron: L41-N1387
+data: pilot/fineweb-10m-sparse
+label: pushes 'medical'/'marijuana' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The token before a policy/topic noun, often ''of'' or ''to'' before legalize/legalization/medical;
+    about 10 of 32 are followed by medical, legalize, or marijuana-related words. In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "medical", "licensed", "canadian", "marijuana": +0.17 nats, 4x
+    random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 3 of 32 top examples
+    (medical, marijuana).'
+  fires_on: The token before a policy/topic noun, often 'of' or 'to' before legalize/legalization/medical; about
+    10 of 32 are followed by medical, legalize, or marijuana-related words.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [4, 13, 18]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

@@ -1,0 +1,31 @@
+neuron: L40-N8349
+data: pilot/fineweb-10m-sparse
+label: pushes 'part' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word before ''of'' or ''part'' in ''one of'', ''part of'', ''first of'', ''as
+    part of''; about 20 of 32 are followed by ''of'' or ''part''. In tumanian''s steering sweep (this side set to
+    k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons of the
+    same layer and side), it raised "public", "part", "member", "opinion": +0.35 nats, 9x random. Contrast test
+    passed (8 of 10 pairs). Firing token followed by a steered word: 5 of 32 top examples (part).'
+  fires_on: Marked token is a word before 'of' or 'part' in 'one of', 'part of', 'first of', 'as part of'; about
+    20 of 32 are followed by 'of' or 'part'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 3, 4, 8, 25]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

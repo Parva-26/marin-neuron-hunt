@@ -1,0 +1,32 @@
+neuron: L40-N21493
+data: pilot/fineweb-10m-sparse
+label: pushes 'author'/'blog' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a preposition or punctuation right before a person''s name, mostly ''by'' or ''from''
+    after directed/written/painted or a role word; about 20 of 32 followed by a name like Michael, Ron, David, Jason.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "author", "blog", "indian", "architect":
+    +0.22 nats, 8x random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 0 of 32
+    top examples.'
+  fires_on: Marked token is a preposition or punctuation right before a person's name, mostly 'by' or 'from' after
+    directed/written/painted or a role word; about 20 of 32 followed by a name like Michael, Ron, David, Jason.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
