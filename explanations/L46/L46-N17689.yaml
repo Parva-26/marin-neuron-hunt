@@ -1,0 +1,31 @@
+neuron: L46-N17689
+data: pilot/fineweb-10m-sparse
+label: pushes 'gene'/'therapy' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked tokens are scattered across many contexts (embryo, transplant, implants, IVF, medicine);
+    no shared next word, about 2 of 32 followed by ''a'' or ''the''. In tumanian''s steering sweep (this side set
+    to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons of
+    the same layer and side), it raised "gene", "therapy": +0.40 nats, 10x random. Contrast test passed (10 of 10
+    pairs). Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked tokens are scattered across many contexts (embryo, transplant, implants, IVF, medicine); no shared
+    next word, about 2 of 32 followed by 'a' or 'the'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

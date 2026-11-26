@@ -1,0 +1,32 @@
+neuron: L46-N17634
+data: pilot/fineweb-10m-sparse
+label: pushes 'owner'/'property' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Tokens right before an ownership-claim continuation such as ''the''/''owner''/''property''/''own'';
+    about 12 of 32 are a word before ''the'', ''owner'', ''property'' or ''own'' (e.g. ''is [the] property'', ''the
+    [rightful] owner''). In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token,
+    next-token log-probability change compared with random neurons of the same layer and side), it raised "property",
+    "owner": +0.45 nats, 9x random. Contrast test passed (8 of 10 pairs). Firing token followed by a steered word:
+    6 of 32 top examples (owner, property).'
+  fires_on: Tokens right before an ownership-claim continuation such as 'the'/'owner'/'property'/'own'; about 12
+    of 32 are a word before 'the', 'owner', 'property' or 'own' (e.g. 'is [the] property', 'the [rightful] owner').
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [2, 8, 10, 11, 20, 24]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

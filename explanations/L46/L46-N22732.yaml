@@ -1,0 +1,33 @@
+neuron: L46-N22732
+data: pilot/fineweb-10m-sparse
+label: pushes 'magazine'/'publication' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The marked token is a word modifying a print publication (independent, period, weekly, student,
+    daily, British), and the next word is newspaper, periodical, paper, or magazine; about 20 of 32 are followed
+    by newspaper/periodical/paper/magazine forms. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "free", "online", "magazine", "publication": +0.66 nats, 19x random. Contrast test passed (10 of 10
+    pairs). Firing token followed by a steered word: 5 of 32 top examples (magazine, publication).'
+  fires_on: The marked token is a word modifying a print publication (independent, period, weekly, student, daily,
+    British), and the next word is newspaper, periodical, paper, or magazine; about 20 of 32 are followed by newspaper/periodical/paper/magazine
+    forms.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [11, 17, 21, 24, 30]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

@@ -1,0 +1,32 @@
+neuron: L46-N21462
+data: pilot/fineweb-10m-sparse
+label: pushes 'doll' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word or word piece just before a mannequin/puppet/statue-type noun (a, man, wooden,
+    dummy, figurehead); about 20 of 32 precede such object words, mostly mannequin, ventriloquist, puppet, figure.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "doll", "inflatable": +0.61 nats,
+    13x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 2 of 32 top examples
+    (doll).'
+  fires_on: Marked token is a word or word piece just before a mannequin/puppet/statue-type noun (a, man, wooden,
+    dummy, figurehead); about 20 of 32 precede such object words, mostly mannequin, ventriloquist, puppet, figure.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [27, 28]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

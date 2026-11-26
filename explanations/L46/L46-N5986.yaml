@@ -1,0 +1,33 @@
+neuron: L46-N5986
+data: pilot/fineweb-10m-sparse
+label: pushes 'intermediary' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The token just before an intermediary-type word such as ''middleman'', ''mediator'', ''mediating'',
+    ''intermediary'', ''translator'' or ''gatekeeper'' (e.g. ''acts [as] a middleman''); about 20 of 32 are ''as'',
+    ''a'', ''the'', ''to'', ''med'' or ''an'' followed by such a role noun. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "intermediary": +1.62 nats, 28x random. Contrast test passed (10 of 10
+    pairs). Firing token followed by a steered word: 2 of 32 top examples (intermediary).'
+  fires_on: The token just before an intermediary-type word such as 'middleman', 'mediator', 'mediating', 'intermediary',
+    'translator' or 'gatekeeper' (e.g. 'acts [as] a middleman'); about 20 of 32 are 'as', 'a', 'the', 'to', 'med'
+    or 'an' followed by such a role noun.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [5, 10]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

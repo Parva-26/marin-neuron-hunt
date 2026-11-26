@@ -1,0 +1,32 @@
+neuron: L46-N11148
+data: pilot/fineweb-10m-sparse
+label: pushes 'government' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word before a modifier or noun phrase tied to politics or state, e.g. ''since''
+    before independence, ''political'', ''military''; about 8 of 32 have ''independence'' or ''political'' next.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "government", "country", "republic",
+    "democratic": +0.51 nats, 13x random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered
+    word: 1 of 32 top examples (government).'
+  fires_on: Marked token is a word before a modifier or noun phrase tied to politics or state, e.g. 'since' before
+    independence, 'political', 'military'; about 8 of 32 have 'independence' or 'political' next.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [8]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
