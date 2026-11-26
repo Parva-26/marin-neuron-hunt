@@ -1,0 +1,31 @@
+neuron: L42-N7258
+data: pilot/fineweb-10m-sparse
+label: pushes 'coma' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked tokens are mostly words in medical or coma/vegetative-state contexts, often right before
+    ''a'', ''in'', ''the'', or ''life'' (about 9 of 28 followed by a, in, or the). In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "state", "consciousness", "coma": +0.19 nats, 6x random. Contrast
+    test passed (9 of 10 pairs). Firing token followed by a steered word: 1 of 28 top examples (coma).'
+  fires_on: Marked tokens are mostly words in medical or coma/vegetative-state contexts, often right before 'a',
+    'in', 'the', or 'life' (about 9 of 28 followed by a, in, or the).
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [22]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

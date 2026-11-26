@@ -1,0 +1,32 @@
+neuron: L42-N19444
+data: pilot/fineweb-10m-sparse
+label: pushes 'high' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is usually a space or ''with''/''('' right before a number or measure, mostly after
+    cholesterol-related words; following words are numbers like 5, 150, 50, 175, 28%. About 8 of 12 are numeric
+    or cholesterol-context. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token,
+    next-token log-probability change compared with random neurons of the same layer and side), it raised "high",
+    "changes", "diet", "seeking", "cholesterol": +0.14 nats, 4x random. Contrast test passed (10 of 10 pairs). Firing
+    token followed by a steered word: 1 of 12 top examples (high).'
+  fires_on: Marked token is usually a space or 'with'/'(' right before a number or measure, mostly after cholesterol-related
+    words; following words are numbers like 5, 150, 50, 175, 28%. About 8 of 12 are numeric or cholesterol-context.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [8]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

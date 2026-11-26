@@ -1,0 +1,33 @@
+neuron: L43-N4487
+data: pilot/fineweb-10m-sparse
+label: pushes 'service'/'office' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Mixed tokens with no clear shared cue; a few precede subscription/price/service words (about 6 of
+    20: ''per month'', ''purchase the service'', ''Netflix Chief Content Officer'', ''Hulu account''), but no single
+    next word dominates. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token,
+    next-token log-probability change compared with random neurons of the same layer and side), it raised "service",
+    "office", "streaming", "watches", "subscriber": +0.24 nats, 8x random. Contrast test passed (8 of 10 pairs).
+    Firing token followed by a steered word: 0 of 20 top examples.'
+  fires_on: 'Mixed tokens with no clear shared cue; a few precede subscription/price/service words (about 6 of 20:
+    ''per month'', ''purchase the service'', ''Netflix Chief Content Officer'', ''Hulu account''), but no single
+    next word dominates.'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

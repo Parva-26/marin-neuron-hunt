@@ -1,0 +1,33 @@
+neuron: L43-N8099
+data: pilot/fineweb-10m-sparse
+label: pushes 'down'/'gradually' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The marked token is the word right after ''initial'', ''shock'', ''subsequent'' or ''after''-type
+    phrases, mostly fragments of ''subside''/''dissipate'' (sub, subs, ab) or auxiliaries before them; about 20
+    of 32 precede a subside/abate/dissipate-type verb. In tumanian''s steering sweep (this side set to k x scale_abs_p999
+    at a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "down", "gradually", "calming": +0.18 nats, 4x random. Contrast test passed (10 of 10 pairs). Firing
+    token followed by a steered word: 0 of 32 top examples.'
+  fires_on: The marked token is the word right after 'initial', 'shock', 'subsequent' or 'after'-type phrases, mostly
+    fragments of 'subside'/'dissipate' (sub, subs, ab) or auxiliaries before them; about 20 of 32 precede a subside/abate/dissipate-type
+    verb.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
