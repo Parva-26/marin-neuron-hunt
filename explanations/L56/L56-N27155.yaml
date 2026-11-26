@@ -1,0 +1,32 @@
+neuron: L56-N27155
+data: pilot/fineweb-10m-sparse
+label: pushes 'associate'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is often a word right before ''associated'', ''help'', ''support'', ''assist'', or
+    ''affiliation''; about 14 of 32 are followed by one of these. In tumanian''s steering sweep (this side set to
+    k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons of the
+    same layer and side), it raised "university", "professor", "associate": +0.34 nats, 6x random. Contrast test
+    failed (8 of 10 pairs, difference too small). The firing description is the weak part: the contrast test did
+    not confirm it. Firing token followed by a steered word: 6 of 32 top examples (associate).'
+  fires_on: Marked token is often a word right before 'associated', 'help', 'support', 'assist', or 'affiliation';
+    about 14 of 32 are followed by one of these.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 16]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
