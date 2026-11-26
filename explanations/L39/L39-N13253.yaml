@@ -1,0 +1,33 @@
+neuron: L39-N13253
+data: pilot/fineweb-10m-sparse
+label: pushes 'title'/'doctor' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is the token before a person''s title or name, such as Dear, and, Ms, Governor, Sen,
+    Mess; about 20 of 32 are followed by a title or name (Ms, Dr, Mr, Governor, Senator). Often a title-ish word
+    or honorific prefix. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token,
+    next-token log-probability change compared with random neurons of the same layer and side), it raised "title",
+    "doctor", "repeated": +0.12 nats, 4x random. Contrast test passed (8 of 10 pairs). Firing token followed by
+    a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is the token before a person's title or name, such as Dear, and, Ms, Governor, Sen, Mess;
+    about 20 of 32 are followed by a title or name (Ms, Dr, Mr, Governor, Senator). Often a title-ish word or honorific
+    prefix.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

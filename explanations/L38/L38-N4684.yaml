@@ -1,0 +1,32 @@
+neuron: L38-N4684
+data: pilot/fineweb-10m-sparse
+label: pushes 'discount' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Token right before a tax or discount-related word such as tax, deduction, discount, or credit; about
+    14 of 32 marked tokens precede tax, discount, or deduction words, and ''a'' appears 4 times. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "internet", "seeking", "discount": +0.28 nats, 8x
+    random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 3 of 32 top examples
+    (discount).'
+  fires_on: Token right before a tax or discount-related word such as tax, deduction, discount, or credit; about
+    14 of 32 marked tokens precede tax, discount, or deduction words, and 'a' appears 4 times.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [19, 24, 29]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
