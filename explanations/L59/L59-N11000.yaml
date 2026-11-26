@@ -1,0 +1,40 @@
+neuron: L59-N11000
+data: pilot/fineweb-10m-sparse
+label: pushes 'fictional' (+) and 'protection' (-)
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a word right before ''party'' or ''social/bash'' or ''specific'' (e.g. a [[ big]]
+    party, a [[ party]] trash); about 13 of 32 precede party-type or specific-type nouns. In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "fictional": +0.22 nats, 2x random. Contrast test failed
+    (2 of 10 pairs). The firing description is the weak part: the contrast test did not confirm it. Firing token
+    followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is a word right before 'party' or 'social/bash' or 'specific' (e.g. a [[ big]] party, a
+    [[ party]] trash); about 13 of 32 precede party-type or specific-type nouns.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a word before a noun-like head word; following words vary (design, safety, instances,
+    choices, decisions); about 6 of 26 are followed by design/safety/instances/decisions/choices, no single dominant
+    cue. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "world", "level", "protection", "warcraft",
+    "paladin": +0.35 nats, 6x random. Contrast test failed (4 of 10 pairs). The firing description is the weak part:
+    the contrast test did not confirm it. Firing token followed by a steered word: 2 of 26 top examples (protection).'
+  fires_on: Marked token is a word before a noun-like head word; following words vary (design, safety, instances,
+    choices, decisions); about 6 of 26 are followed by design/safety/instances/decisions/choices, no single dominant
+    cue.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [11, 12]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
