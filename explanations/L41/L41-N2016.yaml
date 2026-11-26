@@ -1,0 +1,32 @@
+neuron: L41-N2016
+data: pilot/fineweb-10m-sparse
+label: pushes 'mother'/'organic'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is mostly a word or space/punctuation before a number, quantity, or continuation (e.g.
+    ''10,000'', ''$'', ''growing'', ''with''); no single following word dominates; about 6 of 19 precede a number.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "mother", "organic": +0.15 nats,
+    3x random. Contrast test failed (6 of 10 pairs). The firing description is the weak part: the contrast test
+    did not confirm it. Firing token followed by a steered word: 0 of 19 top examples.'
+  fires_on: Marked token is mostly a word or space/punctuation before a number, quantity, or continuation (e.g.
+    '10,000', '$', 'growing', 'with'); no single following word dominates; about 6 of 19 precede a number.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

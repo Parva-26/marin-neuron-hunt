@@ -1,0 +1,34 @@
+neuron: L41-N12316
+data: pilot/fineweb-10m-sparse
+label: pushes 'personal'/'rules'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a preposition or function word like ''with'', ''to'', ''the'' before an object noun,
+    often in compliance/accordance phrases; next words are varied (the, its, our, warranty). About 10 of 32 followed
+    by ''the'' or a possessive. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral
+    token, next-token log-probability change compared with random neurons of the same layer and side), it raised
+    "personal", "rules", "strict": +0.26 nats, 8x random. Contrast test failed (7 of 10 pairs). The firing description
+    is the weak part: the contrast test did not confirm it. Firing token followed by a steered word: 0 of 32 top
+    examples.'
+  fires_on: Marked token is a preposition or function word like 'with', 'to', 'the' before an object noun, often
+    in compliance/accordance phrases; next words are varied (the, its, our, warranty). About 10 of 32 followed by
+    'the' or a possessive.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

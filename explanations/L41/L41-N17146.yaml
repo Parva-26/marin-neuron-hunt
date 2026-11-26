@@ -1,0 +1,32 @@
+neuron: L41-N17146
+data: pilot/fineweb-10m-sparse
+label: pushes 'ancient'/'egyptian'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a space or number/punctuation before a numeric or number-like continuation (2.1%,
+    4.5 billion, 10%, Article 2); no single next word dominates, about 6 of 20 precede digits or ''the''. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "ancient", "egyptian": +0.48 nats, 13x random. Contrast
+    test failed (5 of 10 pairs). The firing description is the weak part: the contrast test did not confirm it.
+    Firing token followed by a steered word: 0 of 20 top examples.'
+  fires_on: Marked token is a space or number/punctuation before a numeric or number-like continuation (2.1%, 4.5
+    billion, 10%, Article 2); no single next word dominates, about 6 of 20 precede digits or 'the'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
