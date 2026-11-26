@@ -1,0 +1,32 @@
+neuron: L63-N15607
+data: pilot/fineweb-10m-sparse
+label: pushes 'british'/'professor'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a digit, hyphen, comma, or space inside numeric or code strings (ISBNs, DOIs, patent
+    numbers, prices); the following word is mostly a number or code fragment, not a predicted word. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "british", "professor", "oxford": +0.29 nats, 5x
+    random. Contrast test failed (3 of 10 pairs). The firing description is the weak part: the contrast test did
+    not confirm it. Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is a digit, hyphen, comma, or space inside numeric or code strings (ISBNs, DOIs, patent
+    numbers, prices); the following word is mostly a number or code fragment, not a predicted word.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

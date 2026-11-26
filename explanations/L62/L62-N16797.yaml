@@ -1,0 +1,32 @@
+neuron: L62-N16797
+data: pilot/fineweb-10m-sparse
+label: pushes 'mother'/'independent'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a function word or comma before a verb (promote, get, access, accept, leave); about
+    20 of 32 precede a bare verb like ''to'' plus verb or a comma before a verb list. In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "mother", "independent", "artist", "musician", "poet": +0.12
+    nats, 3x random. Contrast test failed (6 of 10 pairs). The firing description is the weak part: the contrast
+    test did not confirm it. Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked token is a function word or comma before a verb (promote, get, access, accept, leave); about
+    20 of 32 precede a bare verb like 'to' plus verb or a comma before a verb list.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
