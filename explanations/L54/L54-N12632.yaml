@@ -1,0 +1,32 @@
+neuron: L54-N12632
+data: pilot/fineweb-10m-sparse
+label: pushes 'book'/'books'; firing cue unclear
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Mixed tokens with no shared cue: numbers, conjunctions ''and'', commas, ''and'' before a name; the
+    next words are varied names and common words, no clear pattern. In tumanian''s steering sweep (this side set
+    to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons of
+    the same layer and side), it raised "book", "books", "reads", "collector", "enthusiast": +0.30 nats, 7x random.
+    Contrast test failed (1 of 10 pairs). The firing description is the weak part: the contrast test did not confirm
+    it. Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: 'Mixed tokens with no shared cue: numbers, conjunctions ''and'', commas, ''and'' before a name; the
+    next words are varied names and common words, no clear pattern.'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
