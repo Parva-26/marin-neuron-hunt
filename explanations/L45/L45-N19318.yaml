@@ -1,0 +1,31 @@
+neuron: L45-N19318
+data: pilot/fineweb-10m-sparse
+label: pushes 'hand' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word before a body-part or hand-related noun (palm, wrist, hand, finger, forearm);
+    about 6 of 13 are followed by palm, hand, wrist or the body part''s neighbor. In tumanian''s steering sweep
+    (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random
+    neurons of the same layer and side), it raised "hand", "artificial", "mechanical": +0.27 nats, 8x random. Contrast
+    test passed (9 of 10 pairs). Firing token followed by a steered word: 2 of 13 top examples (hand).'
+  fires_on: Marked token is a word before a body-part or hand-related noun (palm, wrist, hand, finger, forearm);
+    about 6 of 13 are followed by palm, hand, wrist or the body part's neighbor.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [7, 10]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

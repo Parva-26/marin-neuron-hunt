@@ -1,0 +1,32 @@
+neuron: L45-N16553
+data: pilot/fineweb-10m-sparse
+label: pushes 'based'/'professional' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'about 14 of 32 marked tokens sit right before a megapixel or camera-spec number or the word camera
+    (e.g. ''a[[ ]]500'', ''an impressive[[ ]]8 megapixel'', ''back[[ ]]8MP camera''), mostly before ''8'' or ''camera''.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "based", "professional", "wedding",
+    "photographer", "romania": +0.25 nats, 8x random. Contrast test passed (10 of 10 pairs). Firing token followed
+    by a steered word: 0 of 32 top examples.'
+  fires_on: about 14 of 32 marked tokens sit right before a megapixel or camera-spec number or the word camera (e.g.
+    'a[[ ]]500', 'an impressive[[ ]]8 megapixel', 'back[[ ]]8MP camera'), mostly before '8' or 'camera'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

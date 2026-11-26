@@ -1,0 +1,38 @@
+neuron: L44-N17033
+data: pilot/fineweb-10m-sparse
+label: pushes 'parent'/'christian' (+) and 'lord' (-)
+positive:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Mixed tokens (the, our, you, to, a, become) right before a verb or noun phrase in religious text;
+    no single following word dominates, roughly 3 of 32 followed by ''lives'' or ''will''. In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "parent", "christian", "spouse", "musician": +0.14 nats,
+    3x random. Contrast test failed (6 of 10 pairs). The firing description is the weak part: the contrast test
+    did not confirm it. Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Mixed tokens (the, our, you, to, a, become) right before a verb or noun phrase in religious text; no
+    single following word dominates, roughly 3 of 32 followed by 'lives' or 'will'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The token just before a religious object word, mostly prepositions or verbs before Christ/Jesus/God/Lord
+    (e.g. ''with] the Lord'', ''to] Christ'', ''know] Jesus''); about 25 of 32. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "lord", "divine": +0.25 nats, 7x random. Contrast test passed (10 of
+    10 pairs). Firing token followed by a steered word: 1 of 32 top examples (lord).'
+  fires_on: The token just before a religious object word, mostly prepositions or verbs before Christ/Jesus/God/Lord
+    (e.g. 'with] the Lord', 'to] Christ', 'know] Jesus'); about 25 of 32.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [29]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

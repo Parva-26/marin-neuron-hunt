@@ -1,0 +1,33 @@
+neuron: L43-N23359
+data: pilot/fineweb-10m-sparse
+label: pushes 'odds' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a betting-context word or token (off, at, odds number, put, willing, would, the)
+    before a betting term; next words vary: about 8 of 28 precede odds/wager/bet phrasing like ''long odds'', ''at
+    $1.45'', ''11/10'', ''willing to bet''. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at
+    a neutral token, next-token log-probability change compared with random neurons of the same layer and side),
+    it raised "sports", "offering", "markets", "odds": +0.63 nats, 16x random. Contrast test passed (10 of 10 pairs).
+    Firing token followed by a steered word: 1 of 28 top examples (odds).'
+  fires_on: 'Marked token is a betting-context word or token (off, at, odds number, put, willing, would, the) before
+    a betting term; next words vary: about 8 of 28 precede odds/wager/bet phrasing like ''long odds'', ''at $1.45'',
+    ''11/10'', ''willing to bet''.'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [13]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
