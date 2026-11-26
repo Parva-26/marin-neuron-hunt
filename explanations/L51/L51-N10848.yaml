@@ -1,0 +1,31 @@
+neuron: L51-N10848
+data: pilot/fineweb-10m-sparse
+label: pushes 'power' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word before an electricity/power-related noun (electricity, utilities, electric,
+    power), often after ''of'', ''without'', ''on'', ''restored''; about 20 of 32 precede electric/power/utility
+    terms. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "power": +1.72 nats, 34x random.
+    Contrast test passed (8 of 10 pairs). Firing token followed by a steered word: 5 of 32 top examples (power).'
+  fires_on: Marked token is a word before an electricity/power-related noun (electricity, utilities, electric, power),
+    often after 'of', 'without', 'on', 'restored'; about 20 of 32 precede electric/power/utility terms.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [8, 16, 18, 20, 26]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

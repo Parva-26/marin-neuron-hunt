@@ -1,0 +1,31 @@
+neuron: L59-N14733
+data: pilot/fineweb-10m-sparse
+label: pushes 'artificial'/'fountain' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The word right before a font/typeface-related word: marked token is a function word or modifier
+    (that, of, and, the, relative, customized) preceding ''font(s)'', ''typeface'', or ''fontana''; about 14 of
+    20. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "artificial", "fountain": +0.14 nats,
+    2x random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 0 of 20 top examples.'
+  fires_on: 'The word right before a font/typeface-related word: marked token is a function word or modifier (that,
+    of, and, the, relative, customized) preceding ''font(s)'', ''typeface'', or ''fontana''; about 14 of 20.'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
