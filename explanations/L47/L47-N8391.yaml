@@ -1,0 +1,31 @@
+neuron: L47-N8391
+data: pilot/fineweb-10m-sparse
+label: pushes 'product'/'oscar' from a related cue
+positive:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is mid-phrase in meat/processed-meat contexts, followed by meat words like sausage,
+    bacon, salami, prosciutto; about 9 of 23 precede meat-type nouns. In tumanian''s steering sweep (this side set
+    to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons of
+    the same layer and side), it raised "product", "oscar", "mayer": +0.12 nats, 3x random. Contrast test passed
+    (10 of 10 pairs). Firing token followed by a steered word: 0 of 23 top examples.'
+  fires_on: Marked token is mid-phrase in meat/processed-meat contexts, followed by meat words like sausage, bacon,
+    salami, prosciutto; about 9 of 23 precede meat-type nouns.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

@@ -1,0 +1,32 @@
+neuron: L50-N2258
+data: pilot/fineweb-10m-sparse
+label: pushes 'marketing' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word right before a PR, promotion, publicity or advertising word, e.g. ''good
+    [PR]'', ''public [relations]'', ''extensive [promotional]''; about 20 of 32 are followed by a promotion/PR/marketing
+    word. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "manager", "marketing", "stockholm":
+    +0.40 nats, 9x random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 7 of 32
+    top examples (marketing).'
+  fires_on: Marked token is a word right before a PR, promotion, publicity or advertising word, e.g. 'good [PR]',
+    'public [relations]', 'extensive [promotional]'; about 20 of 32 are followed by a promotion/PR/marketing word.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [10, 11, 12, 13, 18, 22, 25]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
