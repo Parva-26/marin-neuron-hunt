@@ -1,0 +1,31 @@
+neuron: L58-N11738
+data: pilot/fineweb-10m-sparse
+label: predicts 'book' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Tokens right before ''book'', ''booking'', ''booked'' or ''bookings'' (e.g. ''you[[ book]]'', ''to
+    book'', ''pre-book''), about 9 to 12 of 32; also some before ''get''. In tumanian''s steering sweep (this side
+    set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "book": +3.13 nats, 42x random. Contrast test passed (10 of 10 pairs).
+    Firing token followed by a steered word: 8 of 32 top examples (book).'
+  fires_on: Tokens right before 'book', 'booking', 'booked' or 'bookings' (e.g. 'you[[ book]]', 'to book', 'pre-book'),
+    about 9 to 12 of 32; also some before 'get'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 2, 3, 5, 10, 14, 18, 23]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

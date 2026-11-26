@@ -1,0 +1,39 @@
+neuron: L48-N17993
+data: pilot/fineweb-10m-sparse
+label: pushes 'bible'/'verse' (+) and 'disorder'/'diagnosed' (-)
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is mostly a word before ''Bible'' or ''verse''/''scripture'' (e.g., ''a [[bible]]'',
+    ''your [[Bible]]'', ''the King''); about 9 of 32 are followed by ''bible'' and a few more by verses or King
+    James. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "verse", "sharing", "bible": +0.81
+    nats, 21x random. Contrast test passed (8 of 10 pairs). Firing token followed by a steered word: 12 of 32 top
+    examples (bible, verse).'
+  fires_on: Marked token is mostly a word before 'Bible' or 'verse'/'scripture' (e.g., 'a [[bible]]', 'your [[Bible]]',
+    'the King'); about 9 of 32 are followed by 'bible' and a few more by verses or King James.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [4, 6, 7, 8, 12, 16, 17, 19, 20, 22, 27, 30]
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked tokens are mostly prepositions, punctuation, or ''early'' before a name or noun, such as
+    ''by'', ''in'', ''of'', ''from'', or ''early''; the next word is usually a proper name or ''early''/''church'';
+    no single cue dominates. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token,
+    next-token log-probability change compared with random neurons of the same layer and side), it raised "disorder",
+    "diagnosed": +0.12 nats, 3x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered
+    word: 0 of 30 top examples.'
+  fires_on: Marked tokens are mostly prepositions, punctuation, or 'early' before a name or noun, such as 'by',
+    'in', 'of', 'from', or 'early'; the next word is usually a proper name or 'early'/'church'; no single cue dominates.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: unrelated
+relation_note: Both sides were in tumanian's steering sweep, separately; they push different words.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

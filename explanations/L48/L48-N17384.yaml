@@ -1,0 +1,31 @@
+neuron: L48-N17384
+data: pilot/fineweb-10m-sparse
+label: predicts 'resident' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is a word or punctuation just before a residency-related word, mostly before ''resident(s)'',
+    ''residency'', or ''residents''; about 6 of 20 are followed by resident/residency or similar. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "united", "states", "resident": +0.24 nats, 6x random.
+    Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 6 of 20 top examples (resident).'
+  fires_on: Marked token is a word or punctuation just before a residency-related word, mostly before 'resident(s)',
+    'residency', or 'residents'; about 6 of 20 are followed by resident/residency or similar.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 3, 7, 8, 13, 14]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

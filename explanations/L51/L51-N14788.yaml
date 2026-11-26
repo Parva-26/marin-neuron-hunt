@@ -1,0 +1,31 @@
+neuron: L51-N14788
+data: pilot/fineweb-10m-sparse
+label: predicts 'faith' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Marked token is usually ''good'' or ''bad'' or ''of''/''by''/''in'' right before ''faith''; about
+    27 of 32 are immediately followed by ''faith'' (e.g. ''good [faith]'', ''leap of [faith]''). In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "faith", "believer": +1.11 nats, 22x random. Contrast
+    test passed (9 of 10 pairs). Firing token followed by a steered word: 24 of 32 top examples (faith).'
+  fires_on: Marked token is usually 'good' or 'bad' or 'of'/'by'/'in' right before 'faith'; about 27 of 32 are immediately
+    followed by 'faith' (e.g. 'good [faith]', 'leap of [faith]').
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 2, 3, 4, 5, 6, 7, 8, 10, 14, 15, 16, 17, 18, 19, 21, 23, 24, 25, 26, 28, 29, 30, 31]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

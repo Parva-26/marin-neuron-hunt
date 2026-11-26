@@ -1,0 +1,31 @@
+neuron: L51-N11711
+data: pilot/fineweb-10m-sparse
+label: predicts 'room'/'space' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'The marked token is a verb or determiner/linking word right before ''room'' or ''way'' (make [way],
+    leave [room], there''s [room]); about 11 of 32 are followed by ''room'' and 6 by ''way''. In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "room", "space": +2.05 nats, 37x random. Contrast test
+    passed (9 of 10 pairs). Firing token followed by a steered word: 12 of 32 top examples (room, space).'
+  fires_on: The marked token is a verb or determiner/linking word right before 'room' or 'way' (make [way], leave
+    [room], there's [room]); about 11 of 32 are followed by 'room' and 6 by 'way'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 3, 4, 5, 6, 7, 8, 20, 23, 27, 29, 30]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
