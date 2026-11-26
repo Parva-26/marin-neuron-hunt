@@ -1,0 +1,31 @@
+neuron: L39-N21361
+data: pilot/fineweb-10m-sparse
+label: pushes 'meal'/'breakfast' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked token is a word before a time/meal-period noun phrase: about 10 of 32 precede hours, times,
+    moment, meal, lunch or breakfast (e.g. ''breakfast'' hours, ''at all'' hours, ''other'' times). In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "meal", "breakfast": +0.27 nats, 8x random. Contrast
+    test passed (8 of 10 pairs). Firing token followed by a steered word: 4 of 32 top examples (meal, breakfast).'
+  fires_on: 'Marked token is a word before a time/meal-period noun phrase: about 10 of 32 precede hours, times,
+    moment, meal, lunch or breakfast (e.g. ''breakfast'' hours, ''at all'' hours, ''other'' times).'
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [3, 19, 25, 30]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

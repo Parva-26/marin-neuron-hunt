@@ -1,0 +1,33 @@
+neuron: L40-N21022
+data: pilot/fineweb-10m-sparse
+label: pushes 'clock' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'The token right before ''the clock'', ''hours'', ''/7'', or ''-hour'' phrases, such as ''around''
+    before ''the clock'' or ''24'' before ''/7'' or ''hours''; about 20 of 32 are ''around'', ''24'', or ''round''
+    followed by a clock/hours/7 phrase. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a
+    neutral token, next-token log-probability change compared with random neurons of the same layer and side), it
+    raised "clock": +0.49 nats, 11x random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered
+    word: 0 of 32 top examples.'
+  fires_on: The token right before 'the clock', 'hours', '/7', or '-hour' phrases, such as 'around' before 'the
+    clock' or '24' before '/7' or 'hours'; about 20 of 32 are 'around', '24', or 'round' followed by a clock/hours/7
+    phrase.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

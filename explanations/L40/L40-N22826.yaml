@@ -1,0 +1,33 @@
+neuron: L40-N22826
+data: pilot/fineweb-10m-sparse
+label: pushes 'minor'/'seeking' from a related cue
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: mixed
+  explanation: 'Marked word is a function word or verb inside approval/permission phrasing, followed by words like
+    ''be'', ''the'', ''your'', ''to'', ''for'' (e.g. ''must [[be]] approved'', ''without [[your]] permission'');
+    about 20 of 32 precede approval-type words, though the immediate next words are varied. In tumanian''s steering
+    sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with
+    random neurons of the same layer and side), it raised "minor", "seeking", "consent", "parental": +0.33 nats,
+    10x random. Contrast test passed (8 of 10 pairs). Firing token followed by a steered word: 0 of 32 top examples.'
+  fires_on: Marked word is a function word or verb inside approval/permission phrasing, followed by words like 'be',
+    'the', 'your', 'to', 'for' (e.g. 'must [[be]] approved', 'without [[your]] permission'); about 20 of 32 precede
+    approval-type words, though the immediate next words are varied.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
