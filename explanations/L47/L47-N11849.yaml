@@ -1,0 +1,31 @@
+neuron: L47-N11849
+data: pilot/fineweb-10m-sparse
+label: predicts 'washington' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'The preposition ''in'' or ''to'' right before a political body or city, such as Washington, Congress,
+    Frankfort, or Albany; about 22 of 32 are followed by Washington or Congress. In tumanian''s steering sweep (this
+    side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "woman", "washington", "native", "redskins": +0.22 nats, 7x random. Contrast
+    test passed (8 of 10 pairs). Firing token followed by a steered word: 10 of 32 top examples (washington).'
+  fires_on: The preposition 'in' or 'to' right before a political body or city, such as Washington, Congress, Frankfort,
+    or Albany; about 22 of 32 are followed by Washington or Congress.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 1, 2, 3, 5, 6, 10, 11, 13, 16]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

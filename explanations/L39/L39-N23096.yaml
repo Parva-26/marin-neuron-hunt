@@ -1,0 +1,32 @@
+neuron: L39-N23096
+data: pilot/fineweb-10m-sparse
+label: predicts 'screen'/'computer' next
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Prepositions or determiners (at, on, from, through, the, your, of) right before a screen/TV/display
+    noun; about 20 of 32 are followed by ''the'', ''your'', or ''screen''. In tumanian''s steering sweep (this side
+    set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared with random neurons
+    of the same layer and side), it raised "display", "interface", "screen", "computer": +0.22 nats, 6x random.
+    Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 10 of 32 top examples (screen,
+    computer).'
+  fires_on: Prepositions or determiners (at, on, from, through, the, your, of) right before a screen/TV/display
+    noun; about 20 of 32 are followed by 'the', 'your', or 'screen'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [1, 3, 4, 6, 9, 13, 19, 25, 26, 28]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

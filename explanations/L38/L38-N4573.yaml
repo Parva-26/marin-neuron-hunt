@@ -1,0 +1,32 @@
+neuron: L38-N4573
+data: pilot/fineweb-10m-sparse
+label: predicts 'headline'/'news' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'Verbs or prepositions right before a news-coverage phrase, like ''made'' before headlines, ''in''
+    before ''the news'', ''the'' before ''news''; about 25 of 32 are made/in/the followed by headlines or news.
+    In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "news", "headline": +0.85 nats, 25x
+    random. Contrast test passed (10 of 10 pairs). Firing token followed by a steered word: 16 of 32 top examples
+    (headline, news).'
+  fires_on: Verbs or prepositions right before a news-coverage phrase, like 'made' before headlines, 'in' before
+    'the news', 'the' before 'news'; about 25 of 32 are made/in/the followed by headlines or news.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [2, 4, 5, 6, 7, 9, 11, 13, 15, 16, 17, 18, 19, 25, 28, 29]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

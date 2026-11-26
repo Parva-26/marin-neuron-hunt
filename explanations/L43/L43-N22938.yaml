@@ -1,0 +1,32 @@
+neuron: L43-N22938
+data: pilot/fineweb-10m-sparse
+label: predicts 'meeting' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'The marked token is a word before ''meet''/''meeting'' (to, for, us, you, arrange, met, before);
+    about 20 of 32 are directly followed by a form of meet, and more are followed by ''meet''-related verbs. In
+    tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "people", "place", "meeting": +0.28
+    nats, 9x random. Contrast test passed (9 of 10 pairs). Firing token followed by a steered word: 8 of 32 top
+    examples (meeting).'
+  fires_on: The marked token is a word before 'meet'/'meeting' (to, for, us, you, arrange, met, before); about 20
+    of 32 are directly followed by a form of meet, and more are followed by 'meet'-related verbs.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 2, 20]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

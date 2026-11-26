@@ -1,0 +1,31 @@
+neuron: L45-N19064
+data: pilot/fineweb-10m-sparse
+label: predicts 'video'/'music' next
+positive:
+  status: explained
+  confidence: high
+  cue_type: next-token
+  explanation: 'The token just before ''video'' or ''videos'' (e.g. music, official, lyric, their, the); about 22
+    of 32 are followed by ''video(s)''. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a
+    neutral token, next-token log-probability change compared with random neurons of the same layer and side), it
+    raised "video", "music", "producer": +0.28 nats, 7x random. Contrast test passed (10 of 10 pairs). Firing token
+    followed by a steered word: 21 of 32 top examples (video, music).'
+  fires_on: The token just before 'video' or 'videos' (e.g. music, official, lyric, their, the); about 22 of 32
+    are followed by 'video(s)'.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0, 1, 2, 4, 5, 6, 7, 9, 10, 11, 14, 16, 17, 18, 21, 23, 25, 26, 27, 28, 31]
+  verification: untested
+negative:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the + side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+relation: none
+relation_note: Only the + side was investigated in tumanian's steering sweep; the - side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
