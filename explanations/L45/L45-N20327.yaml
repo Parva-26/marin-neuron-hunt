@@ -1,0 +1,33 @@
+neuron: L45-N20327
+data: pilot/fineweb-10m-sparse
+label: pushes 'system'/'support'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a punctuation or small word (hyphen, newline, comma, ''create'', ''Help'') followed
+    by a product or company name or ''Desk''/''Well''; no single cue. About 2 of 6 precede a product or company
+    name. In tumanian''s steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability
+    change compared with random neurons of the same layer and side), it raised "system", "support", "service", "customer",
+    "ticket", "representative": +0.56 nats, 16x random. Contrast test failed (5 of 10 pairs). The firing description
+    is the weak part: the contrast test did not confirm it. Firing token followed by a steered word: 0 of 6 top
+    examples.'
+  fires_on: Marked token is a punctuation or small word (hyphen, newline, comma, 'create', 'Help') followed by a
+    product or company name or 'Desk'/'Well'; no single cue. About 2 of 6 precede a product or company name.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [0]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2

@@ -1,0 +1,32 @@
+neuron: L44-N23357
+data: pilot/fineweb-10m-sparse
+label: pushes 'memories'; firing cue unclear
+positive:
+  status: unclear
+  cue_type: none
+  explanation: 'Not investigated: tumanian''s sweep looked only at the - side.'
+  fires_on: not investigated
+  not_on: untested
+  evidence: []
+  verification: untested
+negative:
+  status: explained
+  confidence: weak
+  cue_type: mixed
+  explanation: 'Marked token is a space, digit, or hyphen inside spec-like text (e.g. ''128'', ''2x 128-bit'', ''DDR4'');
+    next words are mostly unrelated spec terms like bit, slots, memory, lots, fma. No single cue. In tumanian''s
+    steering sweep (this side set to k x scale_abs_p999 at a neutral token, next-token log-probability change compared
+    with random neurons of the same layer and side), it raised "memories", "recursive": +0.16 nats, 3x random. Contrast
+    test failed (8 of 10 pairs, difference too small). The firing description is the weak part: the contrast test
+    did not confirm it. Firing token followed by a steered word: 1 of 8 top examples (memories).'
+  fires_on: Marked token is a space, digit, or hyphen inside spec-like text (e.g. '128', '2x 128-bit', 'DDR4');
+    next words are mostly unrelated spec terms like bit, slots, memory, lots, fma. No single cue.
+  not_on: untested; the sparse tier can't show non-firing
+  evidence: [7]
+  verification: untested
+relation: none
+relation_note: Only the - side was investigated in tumanian's steering sweep; the + side is still open.
+by:
+- github: tumanian
+  method: agent
+  model: claude-fable-5-2
